@@ -1,1 +1,1846 @@
-abcd
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://bl.ocks.org/sgcc/raw/7ad094c9acd1877785ee39cde67eb6c7/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+
+.links line {
+  stroke: #76963e;
+  stroke-width: 1.0px;
+  stroke-opacity: 1.5;
+}
+
+.nodes circle {
+  stroke: green;
+  stroke-width: 0.5px;
+}
+
+#ib-d3-graph-div {
+  height: 700px;
+  width: 960px;
+}
+  
+#testSvgId {
+  height: 700px;
+  width: 960px;
+}
+  
+#backgroundId {
+  height: 700px;
+  width: 960px;
+}
+
+text {
+  font: bold 12px monospace;
+}
+
+</style>
+
+</head><body><div id="ib-d3-graph-div">
+<!-- <svg id="testSvgId" width="960" height="500"></svg> -->
+<script src="./dynamic_update_files/d3.v4.min.js"></script>
+<script src="crossings_initial.js"></script>
+<!-- <script src="area_coverage.js"></script> -->
+<script src="area_coverage_mingwei.js"></script>
+<!-- <script src="ideal_edge_lenghth_preservation.js"></script> -->
+<script src="ideal_edge_lenghth_preservation_mingwei.js"></script>
+<!-- 2500 3000 3500 4000 4500 5000 -->
+<!-- <script src="topics_zmlt_input.js"></script> -->  <!-- 5000 -->
+<!-- <script src="topics_zmlt_input_v2.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_100.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_200.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_400.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_800.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_1600.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_2500.js"></script> -->  <!-- 5000 -->
+<!-- <script src="nodes_to_files_3500.js"></script> -->  <!-- 5000 -->
+<!-- <script src="low_degree_topics_data_14.js"></script> -->  <!-- 5000 -->
+<!-- <script src="crd_5000.js"></script> -->  <!-- 5000 -->
+<!-- <script src="crd_5000_100.js"></script> -->  <!-- 5000 -->
+<!-- <script src="crd_5000_200.js"></script> -->  <!-- 5000 -->
+<!-- <script src="crd_5000_300.js"></script> -->  <!-- 5000 -->
+<!-- <script src="crd_5000_300_revised.js"></script> -->  <!-- 5000 -->
+<!-- <script src="crd_5000_700.js"></script> -->  <!-- 5000 -->
+<!-- <script src="low_degree_topics_data_8.js"></script> -->  <!-- 2000 -->
+<!-- <script src="low_degree_topics_data_7.js"></script> -->  <!-- 1600 -->
+<!-- <script src="low_degree_topics_data_6.js"></script> -->  <!-- 1200 -->
+<!-- <script src="low_degree_topics_data_6_min_subdivision.js"></script> -->  <!-- 1200 -->
+<!-- <script src="low_degree_topics_data_5.js"></script> -->  <!-- 800 -->
+<!-- <script src="low_degree_topics_data_700.js"></script> -->
+<!-- <script src="low_degree_topics_data_600.js"></script> -->
+<!-- <script src="low_degree_topics_data_4.js"></script> -->  <!-- 500 -->
+<!-- <script src="low_degree_topics_data_400.js"></script> -->
+<!-- <script src="low_degree_topics_data_300.js"></script> -->
+<!-- <script src="low_degree_topics_data_3.js"></script> -->  <!-- 200 -->
+<!-- <script src="low_degree_topics_data_2.js"></script> -->  <!-- 100 -->
+<!-- <script src="low_degree_topics_data_1.js"></script> -->  <!-- 50 -->
+<!-- <script src="topics_data_small.js"></script> -->
+<!-- <script src="topics_data_large.js"></script> -->
+<!-- <script src="topics_data.js"></script> -->
+<!-- <script src="lastfm_data.js"></script> -->
+<!-- <script src="covid_graph_simple.js"></script> -->
+<!-- <script src="covid_graph_100.js"></script> -->
+<!-- <script src="covid_graph_200.js"></script> -->
+<!-- <script src="covid_graph_500.js"></script> -->
+<!-- <script src="math_genealogy_simple.js"></script> -->
+<!-- <script src="math_genealogy_100.js"></script> -->
+<!-- <script src="math_genealogy_1935.js"></script> -->
+<!-- <script src="math_genealogy_test.js"></script> -->
+<!-- <script src="math_genealogy_500.js"></script> -->
+<!-- <script src="math_genealogy_330.js"></script> -->
+<!-- <script src="math_genealogy_names_shortened.js"></script> -->
+<!-- <script src="math_genealogy_5.js"></script> -->
+<!-- <script src="math_genealogy_20.js"></script> -->
+<!-- <script src="math_genealogy_50.js"></script> -->
+<!-- <script src="math_genealogy_Euler.js"></script> -->
+<!-- <script src="math_genealogy_Newton.js"></script> -->
+<!-- <script src="hard_instance.js"></script> -->
+<!-- <script src="symmetric.js"></script> -->
+<!-- <script src="non_symmetric.js"></script> -->
+<script src="lastfm_8.js"></script>
+<!-- <script src="crd_lastfm_8_1000.js"></script> -->
+<!-- <script src="crd_lastfm_8_1000_revised.js"></script> -->
+<!-- <script src="lastfm_mltd_input.js"></script> -->
+<!-- <script src="lastfm_nodes_to_files_1.js"></script> -->
+<!-- <script src="lastfm_nodes_to_files_2.js"></script> -->
+<!-- <script src="lastfm_nodes_to_files_3.js"></script> -->
+<!-- <script src="lastfm_nodes_to_files_4.js"></script> -->
+<!-- <script src="lastfm_nodes_to_files_5.js"></script> -->
+<!-- <script src="lastfm_nodes_to_files_6.js"></script> -->
+<script src="lastfm_nodes_to_files_7.js"></script>
+<script>
+//enable_GUI = false;
+enable_GUI = true;
+//edgeLengthAddition = 200;
+//edgeLengthAddition = 100;
+//edgeLengthAddition = 50;
+edgeLengthAddition = 0;
+show_collision_circle = false;
+//show_collision_circle = true;
+class D3ForceGraph {
+  constructor(graphDiv, svgId) {
+    let t = this;
+
+    t.graphDiv = graphDiv;
+    t.rect = t.graphDiv.getBoundingClientRect();
+    t.width = t.graphDiv.scrollWidth;
+    t.height = t.graphDiv.scrollHeight;
+    t.center = {x: t.width / 2, y: t.height / 2};
+
+    t.svgId = svgId;
+    t.updateRefCount = 0;
+  }
+
+  init() {
+    let t = this;
+
+    t.graphData = { "nodes": [], "links": [] };
+
+    // graph area
+    let svg = d3.select(t.graphDiv)
+      .append("svg")
+      .attr('id', t.svgId)
+      .attr('width', t.width)
+      .attr('height', t.height);
+
+    // Needs to be second, just after the svg itself.
+    let background = t.initBackground(t, svg);
+    let zoom =
+      d3.zoom()
+        .on("zoom", () => t.handleZoom(svgGroup));
+    background.call(zoom);
+    // background
+
+    // Holds child components (nodes, links), i.e. all but the background
+    let svgGroup = svg
+        .append('svg:g')
+          .attr("id", "svgGroup");
+    t.svgGroup = svgGroup;
+
+    let graphLinksGroup =
+      svgGroup
+        .append("g")
+        .attr("id", `links_${t.svgId}`)
+        .attr("class", "links");
+    t.graphLinksGroup = graphLinksGroup;
+
+    let graphNodesGroup =
+      svgGroup
+        .append("g")
+        .attr("id", `nodes_${t.svgId}`)
+        .attr("class", "nodes");
+    t.graphNodesGroup = graphNodesGroup;
+
+    let simulation = t.initSimulation();
+    t.simulation = simulation;
+
+    // update();
+    t.update(t, simulation, graphNodesGroup, graphLinksGroup);
+  }
+
+  initBackground(t, svg) {
+    let result = svg
+      .append("rect")
+      .attr("id", "backgroundId")
+      .attr("fill", "#F2F7F0")
+      .attr("class", "view")
+      .attr("x", 0.5)
+      .attr("y", 0.5)
+      .attr("width", t.width - 1)
+      .attr("height", t.height - 1)
+      .on("click", () => t.handleBackgroundClicked());
+
+    return result;
+  }
+
+  initSimulation() {
+    let t = this;
+
+    let result = d3.forceSimulation()
+      .velocityDecay(0.55)
+      .force("link", d3.forceLink()
+                       //.distance(100)
+                       //.distance(0)
+                       //.distance(function(d) {if(d.index>=parseInt(my_edges.length/2)){return 50;}else{return 100;}})
+                       .distance(function(d) {return edge_distance[d.index];})
+                       //.distance(function(d) {return edge_distance[d.index]+edgeLengthAddition;})
+                       //.distance(function(d) {return edge_distance[d.index]+100;})
+                       .id(d => d.id))
+      //.force("charge", d3.forceManyBody().strength(-100).distanceMin(10000))
+      .force("charge", d3.forceManyBody().strength(-10).distanceMin(10000))  //use this one
+      //.force("charge", d3.forceManyBody().strength(-10).distanceMin(500))
+      //.force("charge", d3.forceManyBody().strength(-50))
+      //.force("collide", d3.forceCollide(25))
+      //.force("collide", d3.forceCollide(50))
+      .force("collide", d3.forceCollide(100))
+      //.force("collide", d3.forceCollide(d=>collide_arr[d.id]))
+      //.force("collide", d3.forceCollide(d=>t.determine_collision_force(d)))
+      //.force("x", d3.forceX())
+      //.force("y", d3.forceY())
+      .force("center", d3.forceCenter(t.center.x, t.center.y));
+
+    return result;
+  }
+
+  determine_collision_force(d)
+  {
+    if(typeof myGraph == "undefined")return subdivision_length/2;
+    //console.log(d, d.id);
+    let neighbors = myGraph.AdjList.get(d.id);
+    if(typeof neighbors == "undefined")return subdivision_length/2;
+    //if(typeof neighbors == "undefined"){graph.simulation.stop();stopAddingEdges();}
+    //console.log("neighbors", neighbors);
+    //if(neighbors.length>2)return subdivision_length/2;
+    let curr_x = graph.graphData.nodes[d.id].x;
+    let curr_y = graph.graphData.nodes[d.id].y;
+    let max_dis = 0;
+    let min_dis = 10000000;
+    for(let i=0;i<neighbors.length;i++)
+    {
+      let n_x = graph.graphData.nodes[neighbors[i]].x;
+      let n_y = graph.graphData.nodes[neighbors[i]].y;
+      let d_x = n_x - curr_x;
+      let d_y = n_y - curr_y;
+      let curr_dis = Math.sqrt(d_x*d_x + d_y*d_y);
+      if(max_dis<curr_dis)max_dis = curr_dis;
+      if(min_dis>curr_dis)min_dis = curr_dis;
+    }
+    //return max_dis/2;
+    if(neighbors.length<=2){
+      if(min_dis==10000000)return subdivision_length/2;
+      return min_dis/2;
+    }
+    else return max_dis/2;
+    //else return min_dis/2;
+  }
+
+  getRadius(d) {
+    return this.determine_collision_force(d);
+  }
+  getRadiusOld(d) {
+    const min = 5;
+    const max = 50;
+    let r = Math.trunc(500 / (d.id || 1));
+    if (r < min) r = min;
+    if (r > max) r = max;
+
+    return r;
+  }
+  //getColor(d) { return "lightblue"; }
+  getColor(d) { return "red"; }
+
+  handleDragStarted(d, simulation) {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  handleDragged(d) {
+    d.fx = d3.event.x;
+    d.fy = d3.event.y;
+  }
+  handleDragEnded(d, simulation) {
+    if (!d3.event.active) simulation.alphaTarget(0);
+
+    d.fx = undefined;
+    d.fy = undefined;
+  }
+
+  handleBackgroundClicked() {
+    console.log(`background clicked in numero 2`);
+  }
+
+  handleZoom(svgGroup) {
+    svgGroup
+      .attr("transform",
+      `translate(${d3.event.transform.x}, ${d3.event.transform.y})` + " " +
+      `scale(${d3.event.transform.k})`);
+  }
+
+  update(t, simulation, graphNodesGroup, graphLinksGroup) {
+    let nodes = t.graphData.nodes;
+    let links = t.graphData.links;
+
+    // nodes
+    let graphNodesData = null;
+    let graphNodesEnter = null;
+    let graphNodesExit = null;
+    let graphNodeCircles = null;
+    let graphNodeLabels = null;
+    // links
+    let graphLinksData = null;
+    let graphLinksEnter = null;
+    let graphLinksExit = null;
+    if(enable_GUI)
+    {
+      graphNodesData =
+        graphNodesGroup
+          .selectAll("g")
+          .data(nodes, d => d.id);
+
+      graphNodesEnter =
+        graphNodesData
+          .enter()
+            .append("g")
+            .attr("id", d => d.id || null)
+            .on("contextmenu", (d, i)  => {
+               t.remove(d);
+               d3.event.preventDefault();
+            })
+            .on("mouseover", d => console.log(`d.id: ${d.id}`))
+            .on("click", d => t.handleNodeClicked(d));
+
+      let drag =
+      d3.drag()
+        .on("start", d => t.handleDragStarted(d, simulation))
+        .on("drag", d => t.handleDragged(d))
+        .on("end", d => t.handleDragEnded(d, simulation));
+      graphNodesEnter.call(drag);
+
+      graphNodesExit =
+        graphNodesData
+          .exit()
+          // .call((s) => console.log(`selection exiting. s: ${JSON.stringify(s)}`))
+          .remove();
+
+      if(show_collision_circle){
+        graphNodeCircles =
+          graphNodesEnter
+            .append("circle")
+            .classed('node', true)
+            .attr("cursor", "pointer")
+            .attr("r", d => t.getRadius(d))
+            //.attr("fill", d => t.getColor(d));
+            .attr("fill", "none")
+            .style("stroke", d => t.getColor(d));
+      }
+      else{
+        graphNodeCircles =
+          graphNodesEnter
+            .append("circle")
+            .classed('node', true)
+            .attr("cursor", "pointer");
+            //.attr("r", d => t.getRadius(d))
+            //.attr("fill", d => t.getColor(d));
+      }
+
+      graphNodeLabels =
+        graphNodesEnter
+          .append("text")
+          .attr("id", d => "label_" + d.id)
+          .attr("font-size", `10px`)
+          .attr("text-anchor", "middle")
+          .text(d => `${d.name}`);
+
+      // merge
+      graphNodesData =
+        graphNodesEnter.merge(graphNodesData);
+
+      // links
+      graphLinksData =
+        graphLinksGroup
+          .selectAll("line")
+          .data(links);
+      graphLinksEnter =
+         graphLinksData
+          .enter()
+            .append("line");
+      graphLinksExit =
+        graphLinksData
+          .exit()
+          .remove();
+      // merge
+      graphLinksData =
+        graphLinksEnter.merge(graphLinksData);
+    }
+
+    simulation
+      .nodes(nodes)
+      .on("end", () => t.handleEnd());
+
+    if(enable_GUI)
+    {
+      simulation.on("tick", handleTicked);
+    }
+
+    simulation
+      .force("link")
+      .links(links);
+
+    function handleTicked() {
+      //console.log("Number of crossings:", linkCrossingsParam(graph.graphData.links).length);
+      if(safeMode)
+      {
+        if(!locked){
+          locked = true;
+          console.log("Safe mode iteration:", safeModeIter);
+          safeModeIter = safeModeIter + 1;
+
+          /*let links = graph.graphData.links;
+          var quadtree = d3.quadtree()
+            .x(function (d) { return crd_x[d.id]; })
+            .y(function (d) { return crd_y[d.id]; });
+          var data = [links[0].source];
+          for(var i=0;i<links.length;i++)
+            data.push(links[i].target);
+          quadtree.addAll(data);
+          let max_edge_len = 0;
+          for(var i = 0;i<links.length;i++)
+          {
+            //let dis = Math.sqrt((links[i].source.x-links[i].target.x)*(links[i].source.x-links[i].target.x) + (links[i].source.y-links[i].target.y)*(links[i].source.y-links[i].target.y));
+            let dis = Math.sqrt((crd_x[links[i].source.id]-crd_x[links[i].target.id])*(crd_x[links[i].source.id]-crd_x[links[i].target.id]) + (crd_y[links[i].source.id]-crd_y[links[i].target.id])*(crd_y[links[i].source.id]-crd_y[links[i].target.id]));
+            if(max_edge_len<dis)max_edge_len=dis;
+          }*/
+
+          let crd_x_t = {};
+          let crd_y_t = {};
+          for(var i=0;i<=my_edges.length;i++)
+          {
+            crd_x_t[i] = graph.graphData.nodes[i].x;
+            crd_y_t[i] = graph.graphData.nodes[i].y;
+            //graph.graphData.nodes[i].x = crd_x[i];
+            //graph.graphData.nodes[i].y = crd_y[i];
+          }
+          for(var i=0;i<=my_edges.length;i++)
+          {
+            //graph.graphData.nodes[i].x = crd_x_t[i];
+            //graph.graphData.nodes[i].y = crd_y_t[i];
+            let prev_x = crd_x[i];
+            let prev_y = crd_y[i];
+            crd_x[i] = crd_x_t[i];
+            crd_y[i] = crd_y_t[i];
+
+            /*quadtree = quadtree.remove(graph.graphData.nodes[i]);
+            quadtree = quadtree.add(graph.graphData.nodes[i]);
+            let edge_will_get_too_large = false;
+            for(let j=0;j<node_to_links[i].length;j++)
+            {
+              //let dis = Math.sqrt((links[j].source.x-links[j].target.x)*(links[j].source.x-links[j].target.x) + (links[j].source.y-links[j].target.y)*(links[j].source.y-links[j].target.y));
+              let cur_link = node_to_links[i][j];
+              let dis = Math.sqrt((crd_x[cur_link.source.id]-crd_x[cur_link.target.id])*(crd_x[cur_link.source.id]-crd_x[cur_link.target.id]) + (crd_y[cur_link.source.id]-crd_y[cur_link.target.id])*(crd_y[cur_link.source.id]-crd_y[cur_link.target.id]));
+              //if(dis>600)
+              //{
+              //  edge_will_get_too_large = true;
+              //  break;
+              //}
+              if(max_edge_len<dis)max_edge_len=dis; 
+            }
+            if(edge_will_get_too_large)
+            {
+              crd_x[i] = prev_x;
+              crd_y[i] = prev_y;
+
+              quadtree = quadtree.remove(graph.graphData.nodes[i]);
+              quadtree = quadtree.add(graph.graphData.nodes[i]);
+            }
+
+            if(!edge_will_get_too_large)*/
+            {
+              let introducesCrossing = false;
+              for(let j=0;j<node_to_links[i].length;j++)
+              {
+                let link = node_to_links[i][j];
+                /*if(linkCrossingsParamQuadTree (link, crd_x, crd_y, node_to_links, quadtree, max_edge_len+10)!=hasLinkCrossingsWithInputLink(link, crd_x, crd_y))
+                {
+                  console.log("quadtree error", link);
+                  
+          for(var l=0;l<=my_edges.length;l++)
+          {
+            graph.graphData.nodes[l].x = crd_x[l];
+            graph.graphData.nodes[l].y = crd_y[l];
+          }
+          graphLinksData
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            //.attr("y2", d => d.target.y);
+            .attr("y2", d => d.target.y)
+            .style("stroke", d => d.stroke)
+            .style("stroke-width", d => d["stroke-width"]);
+
+          // Translate the groups
+          graphNodesData
+              .attr("transform", d => {
+                return 'translate(' + [d.x, d.y] + ')';
+              });
+          if(show_collision_circle){
+            graphNodesData
+                .selectAll("circle")
+                .attr("r", d => t.getRadius(d));
+          }
+
+                  locked=true;return;
+                }
+                if(linkCrossingsParamQuadTree (link, crd_x, crd_y, node_to_links, quadtree, max_edge_len+10))*/
+                if(hasLinkCrossingsWithInputLink(link, crd_x, crd_y))
+                {
+                  introducesCrossing = true;
+                  break;
+                }
+              }
+              /*if(introducesCrossing)
+              {
+                graph.graphData.nodes[i].x = crd_x[i];
+                graph.graphData.nodes[i].y = crd_y[i];
+              }
+              else
+              {
+                crd_x[i] = crd_x_t[i];
+                crd_y[i] = crd_y_t[i];
+              }*/
+              if(introducesCrossing)
+              {
+                crd_x[i] = prev_x;
+                crd_y[i] = prev_y;
+
+                //quadtree = quadtree.remove(graph.graphData.nodes[i]);
+                //quadtree = quadtree.add(graph.graphData.nodes[i]);
+
+              }
+            }
+          }
+          //console.log("Number of crossings:", linkCrossingsWithCrds (crd_x, crd_y).length);
+          if(safeModeIter%100==0)
+          {
+            let crd_x_log = {};
+            let crd_y_log = {};
+            for(var i=0;i<=my_edges.length;i++)
+            { 
+              crd_x_log[i] = crd_x[i];
+              crd_y_log[i] = crd_y[i];
+            }
+            console.log(crd_x_log, crd_y_log);
+          }
+          for(var i=0;i<=my_edges.length;i++)
+          {
+            graph.graphData.nodes[i].x = crd_x[i];
+            graph.graphData.nodes[i].y = crd_y[i];
+          }
+          graphLinksData
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            //.attr("y2", d => d.target.y);
+            .attr("y2", d => d.target.y)
+            .style("stroke", d => d.stroke)
+            .style("stroke-width", d => d["stroke-width"]);
+
+          // Translate the groups
+          graphNodesData
+              .attr("transform", d => {
+                return 'translate(' + [d.x, d.y] + ')';
+              });
+          if(show_collision_circle){
+            graphNodesData
+                .selectAll("circle")
+                .attr("r", d => t.getRadius(d));
+          }
+          locked = false;
+        }
+      }
+      else{
+        graphLinksData
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          //.attr("y2", d => d.target.y);
+          .attr("y2", d => d.target.y)
+          .style("stroke", d => d.stroke)
+          .style("stroke-width", d => d["stroke-width"]);
+
+        // Translate the groups
+        graphNodesData
+            .attr("transform", d => {
+              return 'translate(' + [d.x, d.y] + ')';
+            });
+        if(show_collision_circle){
+          graphNodesData
+              .selectAll("circle")
+              .attr("r", d => t.getRadius(d));
+        }
+      }
+    }
+  }
+
+  add(nodesToAdd, linksToAdd) {
+    let t = this;
+
+    if (nodesToAdd) {
+      nodesToAdd.forEach(n => t.graphData.nodes.push(n));
+    }
+    if (linksToAdd) {
+      linksToAdd.forEach(l => t.graphData.links.push(l));
+    }
+
+    // update();
+    t.update(t, t.simulation, t.graphNodesGroup, t.graphLinksGroup)
+    t.simulation.restart();
+    t.simulation.alpha(1);
+  }
+
+  remove(dToRemove) {
+    console.log(`dToRemove: ${JSON.stringify(dToRemove)}`)
+
+    let t = this;
+
+    let currentNodes = t.graphData.nodes;
+    let currentLinks = t.graphData.links;
+    let nIndex = currentNodes.indexOf(dToRemove);
+    if (nIndex > -1) {
+      currentNodes.splice(nIndex, 1);
+    }
+
+    let toRemoveLinks = currentLinks.filter(l => {
+      return l.source.id === dToRemove.id || l.target.id === dToRemove.id;
+    });
+    toRemoveLinks.forEach(l => {
+      let lIndex = currentLinks.indexOf(l);
+      currentLinks.splice(lIndex, 1);
+    })
+
+    t.update(t, t.simulation, t.graphNodesGroup, t.graphLinksGroup)
+    t.simulation.restart();
+    t.simulation.alpha(1);
+  }
+
+  handleNodeClicked(d) {
+    console.log(`node clicked: ${JSON.stringify(d)}`);
+
+    let t = this;
+
+    let newId = Math.trunc(Math.random() * 1000);
+    let newNode = {"id": newId, "name": "server 22", x: d.x, y: d.y};
+    let newNodes = [newNode];
+    let newLinks = [{source: d.id, target: newNode.id}]
+
+    t.add(newNodes, newLinks);
+  }
+
+  handleEnd() {
+    //this.simulation.force('x', d3.forceX(0));
+    //this.simulation.force('y', d3.forceY(0));
+    console.log("end");
+    //initialize();
+  }
+}
+
+let graphDiv = document.querySelector("#ib-d3-graph-div");
+let graph = new D3ForceGraph(graphDiv, "testSvgId");
+graph.init();
+
+/*setTimeout(() => {
+  let initialCount = 10;
+  let nodes = [ {"id": 0, "name": "root node"} ];
+  let links = [];
+  for (var i = 1; i < initialCount; i++) {
+    let randomIndex = Math.trunc(Math.random() * nodes.length);
+    let randomNode = nodes[randomIndex];
+    let newNode = {id: i, name: `node ${i}`};
+    let newLink = {source: randomIndex, target: newNode.id};
+
+    nodes.push(newNode);
+    links.push(newLink);
+  }
+
+  graph.add(nodes, links);
+
+  let count = 0;
+  let interval = setInterval(() => {
+    let randomIndex = Math.trunc(Math.random() * graph.graphData.nodes.length);
+    let randomNode = graph.graphData.nodes[randomIndex];
+    let randomId = Math.trunc(Math.random() * 100000);
+    let newNode = {"id": randomId, "name": "server " + randomId};
+    if (randomNode.x) {
+      newNode.x = randomNode.x;
+      newNode.y = randomNode.y;
+    }
+    let newLink = {source: randomNode.id, target: randomId};
+    graph.add([newNode], [newLink]);
+    count ++;
+    if (count % 100 === 0) {
+      console.log(`count: ${count}`)
+      if (count % 400 === 0) {
+        clearInterval(interval);
+      }
+    }
+
+  }, 10)
+
+}, intervalTime);*/
+
+/*
+my_edges = [["machine lear", "optimization"], ["machine lear", "data science"], ["machine lear", "nlp"], ["machine lear", "bioinformati"], ["machine lear", "statistics"], ["machine lear", "artificial i"], ["machine lear", "computer vis"], ["computer vis", "image proces"], ["computer vis", "robotics"]];
+label_to_id = {"machine lear":0, "optimization":1, "data science":2, "nlp":3, "bioinformati":4, "statistics":5, "artificial i":6, "computer vis":7, "image proces":8, "robotics":9};
+id_to_label = {0:"machine lear", 1:"optimization", 2:"data science", 3:"nlp", 4:"bioinformati", 5:"statistics", 6:"artificial i", 7:"computer vis", 8:"image proces", 9:"robotics"};
+*/
+
+/*
+my_edges =  [['Judas Priest', 'W.A.S.P.'], ['Judas Priest', 'Manowar'], ['W.A.S.P.', 'KISS'], ['W.A.S.P.', 'Alice Cooper'], ['Manowar', 'Blind Guardi'], ['KISS', 'Aerosmith'], ['Alice Cooper', 'Ted Nugent'], ['Blind Guardi', 'Kamelot'], ['Ted Nugent', 'Nazareth'], ['Ted Nugent', 'Foghat'], ['Kamelot', 'Epica']]
+label_to_id =  {'Epica': 11, 'KISS': 3, 'Judas Priest': 0, 'Aerosmith': 6, 'Ted Nugent': 7, 'Blind Guardi': 5, 'Foghat': 10, 'Alice Cooper': 4, 'W.A.S.P.': 1, 'Kamelot': 8, 'Manowar': 2, 'Nazareth': 9}
+id_to_label =  {0: 'Judas Priest', 1: 'W.A.S.P.', 2: 'Manowar', 3: 'KISS', 4: 'Alice Cooper', 5: 'Blind Guardi', 6: 'Aerosmith', 7: 'Ted Nugent', 8: 'Kamelot', 9: 'Nazareth', 10: 'Foghat', 11: 'Epica'}
+edge_distance =  {0: 50, 1: 50, 2: 50, 3: 50, 4: 50, 5: 50, 6: 50, 7: 50, 8: 50, 9: 50, 10: 50}
+*/
+
+/*
+my_edges =  [['Manowar', 'Blind Guardi'], ['Manowar', 'Judas Priest'], ['Blind Guardi', 'Kamelot'], ['Judas Priest', 'Black Sabbat'], ['Judas Priest', 'W.A.S.P.'], ['Kamelot', 'Epica'], ['W.A.S.P.', 'KISS'], ['W.A.S.P.', 'Alice Cooper'], ['Epica', 'After Foreve'], ['KISS', 'Aerosmith'], ['Alice Cooper', 'Ted Nugent'], ['After Foreve', 'Lacuna Coil'], ['Ted Nugent', 'Nazareth'], ['Ted Nugent', 'Joe Walsh'], ['Ted Nugent', 'Foghat'], ['Lacuna Coil', 'Evanescence'], ['Nazareth', 'Deep Purple'], ['Joe Walsh', 'Three Dog Ni'], ['Three Dog Ni', 'America']]
+label_to_id =  {'Ted Nugent': 11, 'America': 19, 'W.A.S.P.': 5, 'Judas Priest': 2, 'Blind Guardi': 1, 'Joe Walsh': 14, 'Alice Cooper': 8, 'Epica': 6, 'Deep Purple': 17, 'Three Dog Ni': 18, 'Lacuna Coil': 12, 'Evanescence': 16, 'Manowar': 0, 'Foghat': 15, 'Kamelot': 3, 'KISS': 7, 'After Foreve': 9, 'Nazareth': 13, 'Black Sabbat': 4, 'Aerosmith': 10}
+id_to_label =  {0: 'Manowar', 1: 'Blind Guardi', 2: 'Judas Priest', 3: 'Kamelot', 4: 'Black Sabbat', 5: 'W.A.S.P.', 6: 'Epica', 7: 'KISS', 8: 'Alice Cooper', 9: 'After Foreve', 10: 'Aerosmith', 11: 'Ted Nugent', 12: 'Lacuna Coil', 13: 'Nazareth', 14: 'Joe Walsh', 15: 'Foghat', 16: 'Evanescence', 17: 'Deep Purple', 18: 'Three Dog Ni', 19: 'America'}
+edge_distance =  {0: 100, 1: 100, 2: 100, 3: 50, 4: 100, 5: 100, 6: 100, 7: 100, 8: 50, 9: 100, 10: 100, 11: 50, 12: 100, 13: 50, 14: 100, 15: 50, 16: 50, 17: 50, 18: 50}
+*/
+
+/*
+my_edges =  [['Three Dog Ni', 'America'], ['Three Dog Ni', 'Joe Walsh'], ['America', 'Jackson Brow'], ['Joe Walsh', 'Ted Nugent'], ['Jackson Brow', 'Bob Seger'], ['Jackson Brow', 'James Taylor'], ['Jackson Brow', 'Don McLean'], ['Ted Nugent', 'Nazareth'], ['Ted Nugent', 'Alice Cooper'], ['Ted Nugent', 'Foghat'], ['Bob Seger', 'The J. Geils'], ['James Taylor', 'Carole King'], ['Don McLean', 'Donovan'], ['Nazareth', 'Deep Purple'], ['Alice Cooper', 'W.A.S.P.'], ['The J. Geils', 'The Knack'], ['Carole King', 'Joni Mitchel'], ['Donovan', 'Bob Dylan'], ['Donovan', 'The Zombies'], ['Donovan', 'The Hollies'], ['W.A.S.P.', 'KISS'], ['W.A.S.P.', 'Judas Priest'], ['The Knack', 'The Cars'], ['KISS', 'Aerosmith'], ['Judas Priest', 'Manowar'], ['Judas Priest', 'Black Sabbat'], ['The Cars', 'Devo'], ['The Cars', 'The Pretende'], ['Manowar', 'Blind Guardi'], ['Devo', 'The Psychede'], ['Devo', 'Gang of Four'], ['Devo', 'Sparks'], ['The Pretende', 'The Police'], ['Blind Guardi', 'Kamelot'], ['The Psychede', 'Echo and The'], ['Kamelot', 'Epica'], ['Echo and The', 'Joy Division'], ['Epica', 'After Foreve'], ['Joy Division', 'Bauhaus'], ['After Foreve', 'Lacuna Coil'], ['Bauhaus', 'Siouxsie and'], ['Lacuna Coil', 'Evanescence']]
+label_to_id =  {'Joe Walsh': 2, 'Devo': 27, 'James Taylor': 6, 'Ted Nugent': 4, 'Bob Dylan': 18, 'The Knack': 16, 'Gang of Four': 31, 'Three Dog Ni': 0, 'Alice Cooper': 9, 'The Police': 33, 'Bauhaus': 39, 'The Cars': 23, 'Foghat': 10, 'The Psychede': 30, 'After Foreve': 38, 'Kamelot': 34, 'Lacuna Coil': 40, 'Joni Mitchel': 17, 'KISS': 21, 'W.A.S.P.': 15, 'Siouxsie and': 41, 'Blind Guardi': 29, 'Bob Seger': 5, 'Judas Priest': 22, 'Nazareth': 8, 'Carole King': 12, 'Jackson Brow': 3, 'America': 1, 'Evanescence': 42, 'Aerosmith': 24, 'The Pretende': 28, 'Sparks': 32, 'The Zombies': 19, 'Manowar': 25, 'Echo and The': 35, 'Black Sabbat': 26, 'Joy Division': 37, 'Don McLean': 7, 'Epica': 36, 'Deep Purple': 14, 'The J. Geils': 11, 'Donovan': 13, 'The Hollies': 20}
+id_to_label =  {0: 'Three Dog Ni', 1: 'America', 2: 'Joe Walsh', 3: 'Jackson Brow', 4: 'Ted Nugent', 5: 'Bob Seger', 6: 'James Taylor', 7: 'Don McLean', 8: 'Nazareth', 9: 'Alice Cooper', 10: 'Foghat', 11: 'The J. Geils', 12: 'Carole King', 13: 'Donovan', 14: 'Deep Purple', 15: 'W.A.S.P.', 16: 'The Knack', 17: 'Joni Mitchel', 18: 'Bob Dylan', 19: 'The Zombies', 20: 'The Hollies', 21: 'KISS', 22: 'Judas Priest', 23: 'The Cars', 24: 'Aerosmith', 25: 'Manowar', 26: 'Black Sabbat', 27: 'Devo', 28: 'The Pretende', 29: 'Blind Guardi', 30: 'The Psychede', 31: 'Gang of Four', 32: 'Sparks', 33: 'The Police', 34: 'Kamelot', 35: 'Echo and The', 36: 'Epica', 37: 'Joy Division', 38: 'After Foreve', 39: 'Bauhaus', 40: 'Lacuna Coil', 41: 'Siouxsie and', 42: 'Evanescence'}
+edge_distance =  {0: 100, 1: 100, 2: 50, 3: 100, 4: 50, 5: 50, 6: 50, 7: 150, 8: 150, 9: 150, 10: 50, 11: 50, 12: 50, 13: 100, 14: 150, 15: 50, 16: 50, 17: 50, 18: 50, 19: 50, 20: 150, 21: 150, 22: 50, 23: 150, 24: 150, 25: 100, 26: 50, 27: 50, 28: 150, 29: 50, 30: 50, 31: 50, 32: 50, 33: 150, 34: 50, 35: 150, 36: 50, 37: 100, 38: 50, 39: 100, 40: 50, 41: 100}
+*/
+
+/*
+my_edges =  [['Jackson Brow', 'Don McLean'], ['Jackson Brow', 'America'], ['Jackson Brow', 'Bruce Spring'], ['Jackson Brow', 'James Taylor'], ['Jackson Brow', 'Bob Seger'], ['Don McLean', 'Donovan'], ['America', 'Three Dog Ni'], ['James Taylor', 'Carole King'], ['Bob Seger', 'The J. Geils'], ['Donovan', 'The Zombies'], ['Donovan', 'Bob Dylan'], ['Donovan', 'The Hollies'], ['Three Dog Ni', 'Joe Walsh'], ['Carole King', 'Joni Mitchel'], ['The J. Geils', 'The Knack'], ['The Zombies', 'The Beach Bo'], ['Bob Dylan', 'Van Morrison'], ['The Hollies', 'Roy Orbison'], ['Joe Walsh', 'Ted Nugent'], ['Joni Mitchel', 'Suzanne Vega'], ['The Knack', 'The Cars'], ['The Beach Bo', 'The Monkees'], ['The Beach Bo', 'The Kinks'], ['Van Morrison', 'Paul Simon'], ['Ted Nugent', 'Foghat'], ['Ted Nugent', 'Nazareth'], ['Ted Nugent', 'Alice Cooper'], ['Suzanne Vega', 'Aimee Mann'], ['Suzanne Vega', 'Kate Bush'], ['The Cars', 'The Pretende'], ['The Cars', 'Devo'], ['The Monkees', 'George Harri'], ['Paul Simon', 'Simon and Ga'], ['Nazareth', 'Deep Purple'], ['Alice Cooper', 'W.A.S.P.'], ['Aimee Mann', 'Fiona Apple'], ['Kate Bush', 'Marianne Fai'], ['The Pretende', 'The Police'], ['Devo', 'The Psychede'], ['Devo', 'Sparks'], ['Devo', 'Gang of Four'], ['George Harri', 'The Beatles'], ['W.A.S.P.', 'Judas Priest'], ['W.A.S.P.', 'KISS'], ['Fiona Apple', 'Alanis Moris'], ['Fiona Apple', 'Rachael Yama'], ['Fiona Apple', 'Poe'], ['Marianne Fai', 'Patti Smith'], ['The Psychede', 'Echo and The'], ['Gang of Four', 'Mission of B'], ['The Beatles', 'John Lennon'], ['Judas Priest', 'Black Sabbat'], ['Judas Priest', 'Manowar'], ['KISS', 'Aerosmith'], ['Alanis Moris', 'Dido'], ['Rachael Yama', 'Bonnie Somer'], ['Poe', 'Garbage'], ['Patti Smith', 'Lou Reed'], ['Echo and The', 'Joy Division'], ['Mission of B', 'Minutemen'], ['Manowar', 'Blind Guardi'], ['Bonnie Somer', 'The Shins'], ['Lou Reed', 'The Velvet U'], ['Joy Division', 'Bauhaus'], ['Minutemen', 'Butthole Sur'], ['Blind Guardi', 'Kamelot'], ['The Shins', 'The Magic Nu'], ['The Shins', 'The Postal S'], ['Bauhaus', 'Siouxsie and'], ['Bauhaus', 'The Sisters '], ['Butthole Sur', 'Meat Puppets'], ['Kamelot', 'Epica'], ['The Magic Nu', 'Athlete'], ['The Postal S', 'Death Cab fo'], ['The Sisters ', 'The Cult'], ['Epica', 'After Foreve'], ['Athlete', 'Thirteen Sen'], ['The Cult', 'Tesla'], ['After Foreve', 'Lacuna Coil'], ['Thirteen Sen', 'Travis'], ['Thirteen Sen', 'Keane'], ['Tesla', 'Ugly Kid Joe'], ['Lacuna Coil', 'Evanescence'], ['Travis', 'The Verve'], ['Ugly Kid Joe', 'Guns N  Rose']]
+label_to_id =  {'Meat Puppets': 71, 'Bob Dylan': 11, 'The J. Geils': 9, 'The Cult': 75, 'Travis': 80, 'The Zombies': 10, 'The Hollies': 12, 'Aerosmith': 54, 'Blind Guardi': 61, 'Judas Priest': 43, 'Nazareth': 26, 'Deep Purple': 34, 'Jackson Brow': 0, 'The Cars': 21, 'Donovan': 6, 'Alice Cooper': 27, 'Keane': 81, 'Sparks': 40, 'America': 2, 'The Shins': 62, 'Patti Smith': 48, 'Van Morrison': 17, 'Poe': 47, 'The Velvet U': 63, 'The Beatles': 42, 'Siouxsie and': 69, 'Black Sabbat': 52, 'After Foreve': 76, 'Evanescence': 83, 'Rachael Yama': 46, 'James Taylor': 4, 'Paul Simon': 24, 'Alanis Moris': 45, 'Devo': 31, 'Suzanne Vega': 20, 'The Kinks': 23, 'Athlete': 73, 'Dido': 55, 'Kamelot': 66, 'Bauhaus': 64, 'Thirteen Sen': 77, 'John Lennon': 51, 'Echo and The': 49, 'Garbage': 57, 'Death Cab fo': 74, 'W.A.S.P.': 35, 'The Pretende': 30, 'Kate Bush': 29, 'Joy Division': 59, 'Butthole Sur': 65, 'The Sisters ': 70, 'Simon and Ga': 33, 'Joe Walsh': 13, 'Mission of B': 50, 'Lou Reed': 58, 'The Postal S': 68, 'Carole King': 8, 'The Verve': 84, 'The Monkees': 22, 'The Magic Nu': 67, 'Tesla': 78, 'Marianne Fai': 37, 'Aimee Mann': 28, 'The Beach Bo': 16, 'Don McLean': 1, 'Bonnie Somer': 56, 'KISS': 44, 'Ted Nugent': 19, 'Foghat': 25, 'Bob Seger': 5, 'Lacuna Coil': 79, 'Roy Orbison': 18, 'The Knack': 15, 'Gang of Four': 41, 'The Police': 38, 'The Psychede': 39, 'George Harri': 32, 'Fiona Apple': 36, 'Guns N  Rose': 85, 'Minutemen': 60, 'Epica': 72, 'Ugly Kid Joe': 82, 'Joni Mitchel': 14, 'Bruce Spring': 3, 'Manowar': 53, 'Three Dog Ni': 7}
+id_to_label =  {0: 'Jackson Brow', 1: 'Don McLean', 2: 'America', 3: 'Bruce Spring', 4: 'James Taylor', 5: 'Bob Seger', 6: 'Donovan', 7: 'Three Dog Ni', 8: 'Carole King', 9: 'The J. Geils', 10: 'The Zombies', 11: 'Bob Dylan', 12: 'The Hollies', 13: 'Joe Walsh', 14: 'Joni Mitchel', 15: 'The Knack', 16: 'The Beach Bo', 17: 'Van Morrison', 18: 'Roy Orbison', 19: 'Ted Nugent', 20: 'Suzanne Vega', 21: 'The Cars', 22: 'The Monkees', 23: 'The Kinks', 24: 'Paul Simon', 25: 'Foghat', 26: 'Nazareth', 27: 'Alice Cooper', 28: 'Aimee Mann', 29: 'Kate Bush', 30: 'The Pretende', 31: 'Devo', 32: 'George Harri', 33: 'Simon and Ga', 34: 'Deep Purple', 35: 'W.A.S.P.', 36: 'Fiona Apple', 37: 'Marianne Fai', 38: 'The Police', 39: 'The Psychede', 40: 'Sparks', 41: 'Gang of Four', 42: 'The Beatles', 43: 'Judas Priest', 44: 'KISS', 45: 'Alanis Moris', 46: 'Rachael Yama', 47: 'Poe', 48: 'Patti Smith', 49: 'Echo and The', 50: 'Mission of B', 51: 'John Lennon', 52: 'Black Sabbat', 53: 'Manowar', 54: 'Aerosmith', 55: 'Dido', 56: 'Bonnie Somer', 57: 'Garbage', 58: 'Lou Reed', 59: 'Joy Division', 60: 'Minutemen', 61: 'Blind Guardi', 62: 'The Shins', 63: 'The Velvet U', 64: 'Bauhaus', 65: 'Butthole Sur', 66: 'Kamelot', 67: 'The Magic Nu', 68: 'The Postal S', 69: 'Siouxsie and', 70: 'The Sisters ', 71: 'Meat Puppets', 72: 'Epica', 73: 'Athlete', 74: 'Death Cab fo', 75: 'The Cult', 76: 'After Foreve', 77: 'Thirteen Sen', 78: 'Tesla', 79: 'Lacuna Coil', 80: 'Travis', 81: 'Keane', 82: 'Ugly Kid Joe', 83: 'Evanescence', 84: 'The Verve', 85: 'Guns N  Rose'}
+edge_distance =  {0: 100, 1: 100, 2: 50, 3: 100, 4: 100, 5: 100, 6: 150, 7: 100, 8: 100, 9: 100, 10: 100, 11: 100, 12: 150, 13: 100, 14: 100, 15: 50, 16: 50, 17: 50, 18: 150, 19: 50, 20: 100, 21: 50, 22: 50, 23: 50, 24: 200, 25: 200, 26: 200, 27: 50, 28: 50, 29: 100, 30: 100, 31: 50, 32: 50, 33: 150, 34: 200, 35: 50, 36: 50, 37: 100, 38: 100, 39: 100, 40: 100, 41: 50, 42: 200, 43: 200, 44: 50, 45: 50, 46: 50, 47: 50, 48: 100, 49: 50, 50: 50, 51: 150, 52: 200, 53: 200, 54: 50, 55: 50, 56: 50, 57: 50, 58: 100, 59: 50, 60: 200, 61: 50, 62: 50, 63: 100, 64: 50, 65: 200, 66: 50, 67: 50, 68: 100, 69: 50, 70: 50, 71: 200, 72: 50, 73: 50, 74: 50, 75: 150, 76: 50, 77: 50, 78: 150, 79: 50, 80: 50, 81: 50, 82: 150, 83: 50, 84: 50}
+*/
+
+/*
+my_edges =  [['Suzanne Vega', 'Kate Bush'], ['Suzanne Vega', 'Indigo Girls'], ['Suzanne Vega', 'Joni Mitchel'], ['Suzanne Vega', 'Aimee Mann'], ['Kate Bush', 'Marianne Fai'], ['Indigo Girls', 'Melissa Ethe'], ['Joni Mitchel', 'Carole King'], ['Aimee Mann', 'Fiona Apple'], ['Marianne Fai', 'Patti Smith'], ['Melissa Ethe', 'Paula Cole'], ['Carole King', 'James Taylor'], ['Fiona Apple', 'Poe'], ['Fiona Apple', 'Rachael Yama'], ['Fiona Apple', 'Alanis Moris'], ['Patti Smith', 'Lou Reed'], ['Paula Cole', 'Lisa Loeb'], ['James Taylor', 'Jackson Brow'], ['Poe', 'Garbage'], ['Rachael Yama', 'Bonnie Somer'], ['Alanis Moris', 'Dido'], ['Lou Reed', 'The Velvet U'], ['Lisa Loeb', 'Duncan Sheik'], ['Lisa Loeb', 'Heather Nova'], ['Jackson Brow', 'America'], ['Jackson Brow', 'Bruce Spring'], ['Jackson Brow', 'Don McLean'], ['Jackson Brow', 'Bob Seger'], ['Bonnie Somer', 'The Shins'], ['Duncan Sheik', 'The Verve Pi'], ['Heather Nova', 'Lene Marlin'], ['America', 'Three Dog Ni'], ['Don McLean', 'Donovan'], ['Bob Seger', 'The J. Geils'], ['The Shins', 'The Postal S'], ['The Shins', 'The Magic Nu'], ['The Verve Pi', 'Gin Blossoms'], ['The Verve Pi', 'Everclear'], ['Lene Marlin', 'Maria Mena'], ['Three Dog Ni', 'Joe Walsh'], ['Donovan', 'Bob Dylan'], ['Donovan', 'The Zombies'], ['Donovan', 'The Hollies'], ['The J. Geils', 'The Knack'], ['The Postal S', 'Death Cab fo'], ['The Magic Nu', 'Athlete'], ['Gin Blossoms', 'Sister Hazel'], ['Everclear', 'Soul Asylum'], ['Everclear', 'Counting Cro'], ['Maria Mena', 'Gabriella Ci'], ['Joe Walsh', 'Ted Nugent'], ['Bob Dylan', 'Van Morrison'], ['The Zombies', 'The Beach Bo'], ['The Hollies', 'Roy Orbison'], ['The Knack', 'The Cars'], ['Athlete', 'Thirteen Sen'], ['Sister Hazel', 'Semisonic'], ['Sister Hazel', 'Matchbox Twe'], ['Soul Asylum', 'Blind Melon'], ['Gabriella Ci', 'Girls Aloud'], ['Ted Nugent', 'Foghat'], ['Ted Nugent', 'Nazareth'], ['Ted Nugent', 'Alice Cooper'], ['Van Morrison', 'Paul Simon'], ['The Beach Bo', 'The Monkees'], ['The Beach Bo', 'The Kinks'], ['The Cars', 'Devo'], ['The Cars', 'The Pretende'], ['Thirteen Sen', 'Travis'], ['Thirteen Sen', 'Keane'], ['Semisonic', 'Electric Six'], ['Matchbox Twe', 'The Last Goo'], ['Matchbox Twe', 'Maroon 5'], ['Blind Melon', 'Alice in Cha'], ['Girls Aloud', 'Kelly Osbour'], ['Nazareth', 'Deep Purple'], ['Alice Cooper', 'W.A.S.P.'], ['Paul Simon', 'Simon and Ga'], ['The Monkees', 'George Harri'], ['Devo', 'The Psychede'], ['Devo', 'Gang of Four'], ['Devo', 'Sparks'], ['The Pretende', 'The Police'], ['Travis', 'The Verve'], ['Electric Six', 'Eagles of De'], ['Electric Six', 'The Flaming '], ['Electric Six', 'Zwan'], ['Electric Six', 'Weezer'], ['Electric Six', 'The White St'], ['The Last Goo', 'Reamonn'], ['Maroon 5', 'James Blunt'], ['Alice in Cha', 'Mad Season'], ['Kelly Osbour', 'Hilary Duff'], ['Kelly Osbour', 'Rachel Steve'], ['Kelly Osbour', 'Gwen Stefani'], ['Kelly Osbour', 'Ashlee Simps'], ['W.A.S.P.', 'Judas Priest'], ['W.A.S.P.', 'KISS'], ['George Harri', 'The Beatles'], ['The Psychede', 'Echo and The'], ['Gang of Four', 'Mission of B'], ['The Flaming ', 'Beck'], ['The Flaming ', 'Pixies'], ['The Flaming ', 'Super Furry '], ['The Flaming ', 'Modest Mouse'], ['Reamonn', 'Liquido'], ['Reamonn', 'Lenny Kravit'], ['Mad Season', 'Pearl Jam'], ['Judas Priest', 'Black Sabbat'], ['Judas Priest', 'Manowar'], ['KISS', 'Aerosmith'], ['The Beatles', 'John Lennon'], ['Echo and The', 'Joy Division'], ['Mission of B', 'Minutemen'], ['Super Furry ', 'Supergrass'], ['Liquido', 'Sportfreunde'], ['Lenny Kravit', 'INXS'], ['Lenny Kravit', 'R.E.M.'], ['Lenny Kravit', 'Goo Goo Doll'], ['Pearl Jam', 'Foo Fighters'], ['Manowar', 'Blind Guardi'], ['Joy Division', 'Bauhaus'], ['Minutemen', 'Butthole Sur'], ['Supergrass', 'Blur'], ['Supergrass', 'Pulp'], ['Sportfreunde', 'Madsen'], ['INXS', 'U2'], ['Foo Fighters', 'Incubus'], ['Foo Fighters', 'Tenacious D'], ['Foo Fighters', 'Audioslave'], ['Blind Guardi', 'Kamelot'], ['Bauhaus', 'Siouxsie and'], ['Bauhaus', 'The Sisters '], ['Butthole Sur', 'Meat Puppets'], ['Blur', 'Gorillaz'], ['Pulp', 'Morrissey'], ['Madsen', 'Clueso'], ['Incubus', 'Hoobastank'], ['Incubus', 'A Perfect Ci'], ['Tenacious D', 'Rage Against'], ['Tenacious D', 'Scars On Bro'], ['Kamelot', 'Epica'], ['The Sisters ', 'The Cult'], ['Clueso', 'Fettes Brot'], ['Hoobastank', 'Crossfade'], ['Epica', 'After Foreve'], ['The Cult', 'Tesla'], ['Fettes Brot', 'Deichkind'], ['Crossfade', 'Shinedown'], ['After Foreve', 'Lacuna Coil'], ['Tesla', 'Ugly Kid Joe'], ['Deichkind', 'Peter Fox'], ['Shinedown', 'Nickelback'], ['Lacuna Coil', 'Evanescence'], ['Ugly Kid Joe', 'Guns N  Rose']]
+label_to_id =  {'The Cars': 54, 'Tesla': 146, 'Bob Seger': 27, 'Gin Blossoms': 36, 'George Harri': 78, 'Deep Purple': 75, 'Epica': 141, 'Manowar': 109, 'Sparks': 81, 'Minutemen': 113, 'After Foreve': 145, 'Simon and Ga': 77, 'Evanescence': 153, 'Ted Nugent': 50, 'Ugly Kid Joe': 150, 'Semisonic': 56, 'Alanis Moris': 14, 'Tenacious D': 128, 'The Sisters ': 132, 'The Knack': 43, 'Lene Marlin': 30, 'Mad Season': 91, 'The Police': 82, 'Matchbox Twe': 57, 'Guns N  Rose': 154, 'Don McLean': 26, 'The Zombies': 41, 'Keane': 69, 'Blind Guardi': 120, 'Deichkind': 147, 'KISS': 97, 'Roy Orbison': 53, 'Van Morrison': 51, 'Beck': 101, 'Heather Nova': 23, 'Bruce Spring': 25, 'Sportfreunde': 115, 'The Beach Bo': 52, 'The Verve Pi': 29, 'Jackson Brow': 17, 'Bonnie Somer': 19, 'Gorillaz': 134, 'Soul Asylum': 47, 'The Verve': 83, 'Peter Fox': 151, 'Melissa Ethe': 6, 'Foo Fighters': 119, 'Scars On Bro': 140, 'Clueso': 136, 'Pulp': 124, 'Alice Cooper': 62, 'U2': 126, 'The Monkees': 64, 'James Blunt': 90, 'Three Dog Ni': 31, 'W.A.S.P.': 76, 'Marianne Fai': 5, 'Butthole Sur': 122, 'The Postal S': 34, 'Bob Dylan': 40, 'Hoobastank': 137, 'Paul Simon': 63, 'Meat Puppets': 133, 'INXS': 116, 'Counting Cro': 48, 'Duncan Sheik': 22, 'The Kinks': 65, 'Modest Mouse': 104, 'Kate Bush': 1, 'Bauhaus': 121, 'Suzanne Vega': 0, 'Lisa Loeb': 16, 'The Shins': 28, 'The J. Geils': 33, 'Shinedown': 148, 'Donovan': 32, 'Death Cab fo': 44, 'Thirteen Sen': 55, 'Girls Aloud': 59, 'Kamelot': 130, 'Pixies': 102, 'Alice in Cha': 73, 'Blur': 123, 'Lacuna Coil': 149, 'Patti Smith': 9, 'Joni Mitchel': 3, 'The Psychede': 79, 'Garbage': 18, 'Fiona Apple': 8, 'Joe Walsh': 39, 'Gabriella Ci': 49, 'Nazareth': 61, 'Blind Melon': 58, 'Carole King': 7, 'Fettes Brot': 143, 'The Magic Nu': 35, 'The Last Goo': 71, 'Supergrass': 114, 'Athlete': 45, 'Rage Against': 139, 'Lenny Kravit': 106, 'Aerosmith': 110, 'John Lennon': 111, 'A Perfect Ci': 138, 'The Flaming ': 85, 'Gwen Stefani': 94, 'Morrissey': 135, 'Foghat': 60, 'America': 24, 'Ashlee Simps': 95, 'Hilary Duff': 92, 'Paula Cole': 10, 'Liquido': 105, 'The Pretende': 67, 'Rachel Steve': 93, 'The Velvet U': 21, 'Joy Division': 112, 'Madsen': 125, 'Electric Six': 70, 'Travis': 68, 'Dido': 20, 'The Hollies': 42, 'Incubus': 127, 'Mission of B': 100, 'Siouxsie and': 131, 'Aimee Mann': 4, 'Pearl Jam': 107, 'Nickelback': 152, 'R.E.M.': 117, 'Echo and The': 99, 'The Cult': 142, 'Weezer': 87, 'Audioslave': 129, 'Crossfade': 144, 'Judas Priest': 96, 'Gang of Four': 80, 'Maria Mena': 38, 'Eagles of De': 84, 'Goo Goo Doll': 118, 'The Beatles': 98, 'Everclear': 37, 'The White St': 88, 'Kelly Osbour': 74, 'Poe': 12, 'Indigo Girls': 2, 'Black Sabbat': 108, 'Reamonn': 89, 'Zwan': 86, 'Devo': 66, 'James Taylor': 11, 'Lou Reed': 15, 'Sister Hazel': 46, 'Maroon 5': 72, 'Rachael Yama': 13, 'Super Furry ': 103}
+id_to_label =  {0: 'Suzanne Vega', 1: 'Kate Bush', 2: 'Indigo Girls', 3: 'Joni Mitchel', 4: 'Aimee Mann', 5: 'Marianne Fai', 6: 'Melissa Ethe', 7: 'Carole King', 8: 'Fiona Apple', 9: 'Patti Smith', 10: 'Paula Cole', 11: 'James Taylor', 12: 'Poe', 13: 'Rachael Yama', 14: 'Alanis Moris', 15: 'Lou Reed', 16: 'Lisa Loeb', 17: 'Jackson Brow', 18: 'Garbage', 19: 'Bonnie Somer', 20: 'Dido', 21: 'The Velvet U', 22: 'Duncan Sheik', 23: 'Heather Nova', 24: 'America', 25: 'Bruce Spring', 26: 'Don McLean', 27: 'Bob Seger', 28: 'The Shins', 29: 'The Verve Pi', 30: 'Lene Marlin', 31: 'Three Dog Ni', 32: 'Donovan', 33: 'The J. Geils', 34: 'The Postal S', 35: 'The Magic Nu', 36: 'Gin Blossoms', 37: 'Everclear', 38: 'Maria Mena', 39: 'Joe Walsh', 40: 'Bob Dylan', 41: 'The Zombies', 42: 'The Hollies', 43: 'The Knack', 44: 'Death Cab fo', 45: 'Athlete', 46: 'Sister Hazel', 47: 'Soul Asylum', 48: 'Counting Cro', 49: 'Gabriella Ci', 50: 'Ted Nugent', 51: 'Van Morrison', 52: 'The Beach Bo', 53: 'Roy Orbison', 54: 'The Cars', 55: 'Thirteen Sen', 56: 'Semisonic', 57: 'Matchbox Twe', 58: 'Blind Melon', 59: 'Girls Aloud', 60: 'Foghat', 61: 'Nazareth', 62: 'Alice Cooper', 63: 'Paul Simon', 64: 'The Monkees', 65: 'The Kinks', 66: 'Devo', 67: 'The Pretende', 68: 'Travis', 69: 'Keane', 70: 'Electric Six', 71: 'The Last Goo', 72: 'Maroon 5', 73: 'Alice in Cha', 74: 'Kelly Osbour', 75: 'Deep Purple', 76: 'W.A.S.P.', 77: 'Simon and Ga', 78: 'George Harri', 79: 'The Psychede', 80: 'Gang of Four', 81: 'Sparks', 82: 'The Police', 83: 'The Verve', 84: 'Eagles of De', 85: 'The Flaming ', 86: 'Zwan', 87: 'Weezer', 88: 'The White St', 89: 'Reamonn', 90: 'James Blunt', 91: 'Mad Season', 92: 'Hilary Duff', 93: 'Rachel Steve', 94: 'Gwen Stefani', 95: 'Ashlee Simps', 96: 'Judas Priest', 97: 'KISS', 98: 'The Beatles', 99: 'Echo and The', 100: 'Mission of B', 101: 'Beck', 102: 'Pixies', 103: 'Super Furry ', 104: 'Modest Mouse', 105: 'Liquido', 106: 'Lenny Kravit', 107: 'Pearl Jam', 108: 'Black Sabbat', 109: 'Manowar', 110: 'Aerosmith', 111: 'John Lennon', 112: 'Joy Division', 113: 'Minutemen', 114: 'Supergrass', 115: 'Sportfreunde', 116: 'INXS', 117: 'R.E.M.', 118: 'Goo Goo Doll', 119: 'Foo Fighters', 120: 'Blind Guardi', 121: 'Bauhaus', 122: 'Butthole Sur', 123: 'Blur', 124: 'Pulp', 125: 'Madsen', 126: 'U2', 127: 'Incubus', 128: 'Tenacious D', 129: 'Audioslave', 130: 'Kamelot', 131: 'Siouxsie and', 132: 'The Sisters ', 133: 'Meat Puppets', 134: 'Gorillaz', 135: 'Morrissey', 136: 'Clueso', 137: 'Hoobastank', 138: 'A Perfect Ci', 139: 'Rage Against', 140: 'Scars On Bro', 141: 'Epica', 142: 'The Cult', 143: 'Fettes Brot', 144: 'Crossfade', 145: 'After Foreve', 146: 'Tesla', 147: 'Deichkind', 148: 'Shinedown', 149: 'Lacuna Coil', 150: 'Ugly Kid Joe', 151: 'Peter Fox', 152: 'Nickelback', 153: 'Evanescence', 154: 'Guns N  Rose'}
+edge_distance =  {0: 100, 1: 50, 2: 100, 3: 100, 4: 100, 5: 50, 6: 150, 7: 100, 8: 100, 9: 50, 10: 150, 11: 100, 12: 100, 13: 100, 14: 100, 15: 50, 16: 150, 17: 100, 18: 100, 19: 100, 20: 100, 21: 50, 22: 50, 23: 150, 24: 100, 25: 150, 26: 150, 27: 100, 28: 50, 29: 50, 30: 200, 31: 150, 32: 150, 33: 100, 34: 100, 35: 50, 36: 50, 37: 50, 38: 200, 39: 150, 40: 150, 41: 150, 42: 150, 43: 100, 44: 100, 45: 50, 46: 50, 47: 50, 48: 50, 49: 200, 50: 100, 51: 100, 52: 100, 53: 150, 54: 100, 55: 50, 56: 50, 57: 50, 58: 50, 59: 250, 60: 250, 61: 250, 62: 100, 63: 100, 64: 100, 65: 150, 66: 150, 67: 100, 68: 100, 69: 50, 70: 50, 71: 50, 72: 50, 73: 50, 74: 200, 75: 250, 76: 100, 77: 100, 78: 150, 79: 150, 80: 150, 81: 150, 82: 100, 83: 50, 84: 50, 85: 50, 86: 50, 87: 50, 88: 50, 89: 50, 90: 50, 91: 50, 92: 50, 93: 50, 94: 50, 95: 250, 96: 250, 97: 100, 98: 150, 99: 100, 100: 50, 101: 50, 102: 50, 103: 50, 104: 50, 105: 50, 106: 50, 107: 200, 108: 250, 109: 250, 110: 100, 111: 150, 112: 100, 113: 50, 114: 50, 115: 50, 116: 50, 117: 50, 118: 50, 119: 250, 120: 150, 121: 100, 122: 50, 123: 50, 124: 50, 125: 50, 126: 50, 127: 50, 128: 50, 129: 250, 130: 150, 131: 100, 132: 100, 133: 50, 134: 50, 135: 50, 136: 50, 137: 50, 138: 50, 139: 50, 140: 250, 141: 100, 142: 50, 143: 50, 144: 200, 145: 100, 146: 50, 147: 50, 148: 200, 149: 100, 150: 50, 151: 50, 152: 200, 153: 100}
+*/
+
+function subdivide_edges(subdivision_length, subdivision_factor)
+{
+  var new_edges = [];
+  var new_distance = [];
+  var counter = 0;
+  var new_label_to_id = {};
+  new_label_to_id[my_edges[0][0]] = counter;
+  var new_id_to_label = {};
+  new_id_to_label[counter] = my_edges[0][0];
+  counter = counter + 1;
+  collide_arr = [];
+  var n = my_edges.length + 1;
+  for(var i=0;i<n;i++)
+    collide_arr.push(subdivision_factor*subdivision_length/2);
+  for(var i=0;i<my_edges.length;i++)
+  {
+    var dis = edge_distance[i]+edgeLengthAddition;
+    var n_sub = dis/subdivision_length-1;
+    var prev_ver = n+"";
+    //label_to_id[prev_ver] = n;
+    //id_to_label[n] = prev_ver;
+    new_label_to_id[prev_ver] = counter;
+    new_id_to_label[counter] = prev_ver;
+    counter = counter + 1;
+    new_edges.push([my_edges[i][0], prev_ver]);
+    new_distance.push(subdivision_length);
+    collide_arr.push(subdivision_factor*subdivision_length/2);
+    n = n+1;
+    for(var j=0;j<n_sub-1;j++)
+    {
+      var cur_ver = n+"";
+      //label_to_id[cur_ver] = n;
+      //id_to_label[n] = cur_ver;
+      new_label_to_id[cur_ver] = counter;
+      new_id_to_label[counter] = cur_ver;
+      counter = counter + 1;
+      new_edges.push([prev_ver, cur_ver]);
+      new_distance.push(subdivision_length);
+      collide_arr.push(subdivision_factor*subdivision_length/2);
+      prev_ver = cur_ver;
+      n = n+1;
+    }
+    new_label_to_id[my_edges[i][1]] = counter;
+    new_id_to_label[counter] = my_edges[i][1];
+    counter = counter + 1;
+    new_edges.push([prev_ver, my_edges[i][1]]);
+    new_distance.push(subdivision_length);
+  }
+  my_edges = new_edges;
+  edge_distance = new_distance;
+  label_to_id = new_label_to_id;
+  id_to_label = new_id_to_label;
+}
+subdivision_length = 50;
+//subdivision_length = 100;
+//subdivision_factor = 1.0;
+subdivision_factor = 1.5;
+//subdivide_edges(subdivision_length, subdivision_factor);
+
+// Queue class 
+class Queue 
+{ 
+	// Array is used to implement a Queue 
+	constructor() 
+	{ 
+		this.items = []; 
+	} 
+				
+	// Functions to be implemented 
+	// enqueue(item) 
+// enqueue function 
+enqueue(element) 
+{	 
+	// adding element to the queue 
+	this.items.push(element); 
+} 
+
+	// dequeue() 
+// dequeue function 
+dequeue() 
+{ 
+	// removing element from the queue 
+	// returns underflow when called 
+	// on empty queue 
+	if(this.isEmpty()) 
+		return "Underflow"; 
+	return this.items.shift(); 
+} 
+
+	// front() 
+// front function 
+front() 
+{ 
+	// returns the Front element of 
+	// the queue without removing it. 
+	if(this.isEmpty()) 
+		return "No elements in Queue"; 
+	return this.items[0]; 
+} 
+
+	// isEmpty() 
+// isEmpty function 
+isEmpty() 
+{ 
+	// return true if the queue is empty. 
+	return this.items.length == 0; 
+} 
+
+	// printQueue() 
+// printQueue function 
+printQueue() 
+{ 
+	var str = ""; 
+	for(var i = 0; i < this.items.length; i++) 
+		str += this.items[i] +" "; 
+	return str; 
+} 
+
+} 
+
+
+class MyGraph {
+    constructor(noOfVertices) 
+    { 
+        this.noOfVertices = noOfVertices; 
+        this.AdjList = new Map(); 
+    }
+
+    // add vertex to the graph 
+    addVertex(v) 
+    { 
+	// initialize the adjacent list with a 
+	// null array 
+	this.AdjList.set(v, []); 
+    } 
+
+    // add edge to the graph 
+    addEdge(v, w) 
+    {
+	// get the list for vertex v and put the 
+	// vertex w denoting edge between v and w 
+	/*if(typeof this.AdjList.get(v)=='undefined')this.AdjList.set(v, [w]);
+        else this.AdjList.get(v).push(w);*/
+        //if(typeof this.AdjList.get(v)=='undefined'){graph.simulation.stop();stopAddingEdges();stopRemovingSmallCompMultipleSafe();return;}
+        this.AdjList.get(v).push(w); 
+
+	// Since graph is undirected, 
+	// add an edge from w to v also 
+	/*if(typeof this.AdjList.get(w)=='undefined')this.AdjList.set(w, [v]);
+	else this.AdjList.get(w).push(v);*/
+        //if(typeof this.AdjList.get(w)=='undefined'){graph.simulation.stop();stopAddingEdges();stopRemovingSmallCompMultipleSafe();return;}
+	this.AdjList.get(w).push(v);
+
+    }
+
+    // remove edge from the graph 
+    removeEdge(v, w) 
+    { 
+        var arr = this.AdjList.get(v);
+        if(typeof arr == 'undefined')
+        {
+          graph.simulation.stop();
+          return;
+        }
+        for( var i = 0; i < arr.length; i++){ if ( arr[i] === w) { arr.splice(i, 1); }}
+        arr = this.AdjList.get(w);
+        if(typeof arr == 'undefined')
+        {
+          graph.simulation.stop();
+          return;
+        }
+        for( var i = 0; i < arr.length; i++){ if ( arr[i] === v) { arr.splice(i, 1); }}
+    }
+
+    // Prints the vertex and adjacency list 
+    printGraph() 
+    { 
+	// get all the vertices 
+	var get_keys = this.AdjList.keys(); 
+
+	// iterate over the vertices 
+	for (var i of get_keys) 
+        { 
+		// great the corresponding adjacency list 
+		// for the vertex 
+		var get_values = this.AdjList.get(i); 
+		var conc = ""; 
+
+		// iterate over the adjacency list 
+		// concatenate the values into a string 
+		for (var j of get_values) 
+			conc += j + " "; 
+
+		// print the vertex and its adjacency list 
+		console.log(i + " -> " + conc); 
+	} 
+    }
+
+    // function to performs BFS 
+    bfs(startingNode) 
+    { 
+        var bfsTraversal = [];
+
+	// create a visited array 
+	var visited = []; 
+	for (var i = 0; i < this.noOfVertices; i++) 
+		visited[i] = false; 
+
+	// Create an object for queue 
+	var q = new Queue(); 
+
+	// add the starting node to the queue 
+	visited[startingNode] = true; 
+	q.enqueue(startingNode); 
+
+	// loop until queue is element 
+	while (!q.isEmpty()) { 
+		// get the element from the queue 
+		var getQueueElement = q.dequeue(); 
+
+		// passing the current vertex to callback funtion 
+		//console.log(getQueueElement); 
+                bfsTraversal.push(getQueueElement);
+
+		// get the adjacent list for current vertex 
+		var get_List = this.AdjList.get(getQueueElement); 
+
+		// loop through the list and add the element to the 
+		// queue if it is not processed yet 
+		for (var i in get_List) { 
+			var neigh = get_List[i]; 
+
+			if (!visited[neigh]) { 
+				visited[neigh] = true; 
+				q.enqueue(neigh); 
+			} 
+		} 
+	} 
+        return bfsTraversal;
+    }
+ 
+    bfs_depth(startingNode)
+    {   
+        var bfsTraversal = [];
+        
+        // create a visited array
+        var visited = []; 
+        for (var i = 0; i < this.noOfVertices; i++)
+                visited[i] = false;
+        
+        // Create an object for queue
+        var q = new Queue();
+        
+        // add the starting node to the queue
+        visited[startingNode] = true;
+        q.enqueue([startingNode,0]);
+        
+        // loop until queue is element
+        while (!q.isEmpty()) { 
+                // get the element from the queue 
+                var nodeDepth = q.dequeue();
+                var getQueueElement = nodeDepth[0];
+                
+                // passing the current vertex to callback funtion
+                //console.log(getQueueElement); 
+                bfsTraversal.push(nodeDepth);
+                
+                // get the adjacent list for current vertex 
+                var get_List = this.AdjList.get(getQueueElement);
+                
+                // loop through the list and add the element to the
+                // queue if it is not processed yet
+                for (var i in get_List) { 
+                        var neigh = get_List[i];
+                        
+                        if (!visited[neigh]) { 
+                                visited[neigh] = true;
+                                q.enqueue([neigh, nodeDepth[0]+1]);
+                        }
+                }
+        } 
+        return bfsTraversal;
+    }
+}
+
+var time_when_last_edge_added = 0;
+var time_for_inserting_edge = [];
+
+function myInit() {
+  t0 = performance.now();
+  time_when_last_edge_added = t0;
+  //let nodes = [ {"id": 0, "name": "machine lear"} ];
+  let nodes = [ {"id": 0, "name": my_edges[0][0], "x": crd_x[0], "y": crd_y[0]} ];
+  let links = [];
+  graph.add(nodes, links);
+  graph.graphData.nodes[0].fx = graph.graphData.nodes[0].x;
+  graph.graphData.nodes[0].fy = graph.graphData.nodes[0].y;
+  myGraph = new MyGraph(id_to_label.length);
+  myGraph.addVertex(0);
+}
+
+addEdgePhase = true;
+my_count = 0;
+crossing_step_cnt=0;
+crossing_step_speed=20;
+//crossing_step_type="circular";
+crossing_step_type="straight";
+//intervalTime = 500;
+//intervalTime = 100;
+//intervalTime = 50; //***
+//intervalTime = 20;
+//intervalTime = 10;
+intervalTime = 5;
+//steps_before_fix_position = 1;
+//steps_before_fix_position = 50;
+steps_before_fix_position = 50000;
+/*function initializeAddingEdge()
+{
+    let existingNode = graph.graphData.nodes[label_to_id[my_edges[my_count][0]]];
+    let newId = label_to_id[my_edges[my_count][1]];
+}
+function increaseEdgeLength()
+{
+}*/
+function farthest_location(cntr_vertex){
+    var edg_dis = edge_distance[my_count];
+    var new_x = cntr_vertex.x + edg_dis;
+    var new_y = cntr_vertex.y;
+    var max_min_distance = 0;
+    var max_min_x = 0;
+    var max_min_y = 0;
+    var rotation_dir = 1;
+    let number_of_angles = 100;
+    var theta=Math.atan((new_y-cntr_vertex.y)/(new_x-cntr_vertex.x));
+    for(var i=0;i<number_of_angles;i++)
+    {
+      let tx = new_x-cntr_vertex.x;
+      let ty = new_y-cntr_vertex.y;
+      //console.log("tx, ty", tx, ty);
+      let rx = tx*Math.cos(theta)-ty*Math.sin(theta);
+      let ry = tx*Math.sin(theta)+ty*Math.cos(theta);
+      tx = rx+cntr_vertex.x;
+      ty = ry+cntr_vertex.y;
+      //console.log("tx, ty", tx, ty);
+      let min_dis = 10000000000000;
+      for(var j=0;j<graph.graphData.nodes.length;j++)
+      {
+        let dx = graph.graphData.nodes[j].x - tx;
+        let dy = graph.graphData.nodes[j].y - ty;
+        let node_dis = Math.sqrt(dx*dx + dy*dy);
+        if(min_dis>node_dis)min_dis = node_dis;
+      }
+      if(max_min_distance<min_dis)
+      {
+        max_min_distance=min_dis;
+        max_min_x = tx;
+        max_min_y = ty;
+      }
+
+      theta=theta+(rotation_dir)*(Math.PI/number_of_angles);
+    }
+    return [max_min_x, max_min_y];
+}
+function anti_clockwise_location(cntr_vertex){
+    var edg_dis = edge_distance[my_count];
+    var new_x = cntr_vertex.x;
+    var new_y = cntr_vertex.y + edg_dis;
+    var rotation_dir = 1;
+    let number_of_angles = 100;
+    var theta = 0;
+    for(var i=0;i<number_of_angles;i++)
+    {
+      let tx = new_x-cntr_vertex.x;
+      let ty = new_y-cntr_vertex.y;
+      let rx = tx*Math.cos(theta)-ty*Math.sin(theta);
+      let ry = tx*Math.sin(theta)+ty*Math.cos(theta);
+      tx = rx+cntr_vertex.x;
+      ty = ry+cntr_vertex.y;
+      let inputLink = {index:my_count, source:cntr_vertex, target:{x:tx, y:ty}};
+      var crossings = linkCrossingsWithInputLink(inputLink);
+      //console.log(crossings);
+      if(crossings.length==0)return [tx, ty];
+      theta=theta+(rotation_dir)*(Math.PI/number_of_angles);
+    }
+    //console.log("Haven't found any crossing free position");
+    return [new_x, new_y];
+}
+edge_distance_org = Object.assign({}, edge_distance);
+function startAddingEdges() {
+    //if(my_count>=my_edges.length) return;
+    /*if(my_count>=my_edges.length){
+      stopAddingEdges();
+      return; 
+    }*/
+    //document.getElementById("number_of_crossings").value = linkCrossingsParam(graph.graphData.links).length;
+    /*if(linkCrossingsParam(graph.graphData.links).length>0)
+    //if(linkCrossingsParam(graph.graphData.links).length>=20)
+    //if(linkCrossingsParam(graph.graphData.links).length>=200)
+    //if(!addEdgePhase)
+    {
+      stopAddingEdges();
+      crossing_step_cnt=0;
+      //removeSmallCompIntervalMultipleSafe = setInterval(removeSmallCompAutoMultipleSafe, intervalTime);
+      remove_existing_crossings();
+      addEdgeInterval = setInterval(startAddingEdges, intervalTime);
+      return; 
+    }
+    else if(my_count>=my_edges.length){*/
+    if(my_count>=my_edges.length){
+      stopAddingEdges();
+      var t1 = performance.now();
+      //remove_existing_crossings();
+      console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+      //console.log("Ideal edge length preservation:", ideal_edge_length_preservation(graph.graphData.links, edge_distance));
+      console.log("Ideal edge length preservation:", ideal_edge_length_preservation(graph.graphData.links, edge_distance_org));
+      //area_coverage(graph.graphData.nodes);
+      console.log("Number of crossings:", linkCrossingsParam(graph.graphData.links).length);
+      //console.log("Distribution:", ideal_edge_length_distribution());
+      //console.log("time_for_inserting_edge", time_for_inserting_edge);
+      //console.log(graph.graphData.nodes);
+      if(!enable_GUI)
+      {
+        enable_GUI=true;
+        graph.update(graph, graph.simulation, graph.graphNodesGroup, graph.graphLinksGroup)
+        graph.simulation.restart();
+        graph.simulation.alpha(1);
+      }
+      return;
+    }
+    if(my_count>=steps_before_fix_position)
+    {
+      let prev_node_id = my_count-steps_before_fix_position;
+      graph.graphData.nodes[prev_node_id].fx = graph.graphData.nodes[prev_node_id].x;
+      graph.graphData.nodes[prev_node_id].fy = graph.graphData.nodes[prev_node_id].y;
+    }
+    //let randomIndex = Math.trunc(Math.random() * graph.graphData.nodes.length);
+    //let randomNode = graph.graphData.nodes[randomIndex];
+    let existingNode = graph.graphData.nodes[label_to_id[my_edges[my_count][0]]];
+    //let randomId = Math.trunc(Math.random() * 100000);
+    let newId = label_to_id[my_edges[my_count][1]];
+    //let newNode = {"id": randomId, "name": "server " + randomId};
+    let newNode = {"id": newId, "name": my_edges[my_count][1]};
+    /*//if(nodes_to_levels[my_edges[my_count][1]]>2)
+    //if(my_count>3500)
+    //if(my_count>2500)
+    //if(my_count>1600)
+    //if(my_count>800)
+    //if(my_count>400)
+    //if(my_count>200)
+    if(my_count>100)
+    {
+      //newNode.name = "";
+      stopAddingEdges();
+    }*/
+    /*if (existingNode.x) {
+      //newNode.x = existingNode.x;
+      //newNode.y = existingNode.y;
+      let new_crd = farthest_location(existingNode);
+      //let new_crd = anti_clockwise_location(existingNode);
+      newNode.x = new_crd[0];
+      newNode.y = new_crd[1];
+    }*/
+    newNode.x = crd_x[newId];
+    newNode.y = crd_y[newId];
+    let newLink = {source: existingNode.id, target: newId};
+    graph.add([newNode], [newLink]);
+    graph.graphData.nodes[newId].fx = graph.graphData.nodes[newId].x;
+    graph.graphData.nodes[newId].fy = graph.graphData.nodes[newId].y;
+    myGraph.addVertex(newId);
+    myGraph.addEdge(existingNode.id, newId);
+    let cur_time = performance.now();
+    time_for_inserting_edge.push(cur_time-time_when_last_edge_added);
+    time_when_last_edge_added = cur_time;
+    /*if(time_for_inserting_edge.length==100)
+    {
+      console.log("time_for_inserting_edge", time_for_inserting_edge);
+      time_for_inserting_edge = [];
+    }*/
+    my_count++;
+    graph.simulation.alpha(1).restart();
+}
+
+function initForceDirected()
+{
+  for(var i=0;i<=my_edges.length;i++)
+  {
+    //if(randomNumber(0,100)<=5)
+    //{
+      graph.graphData.nodes[i].fx = null;
+      graph.graphData.nodes[i].fy = null;
+    //}
+  }
+  //if(my_edges.length>2000)
+  {
+    safeMode = true;
+    node_to_links = {};
+    for(var i=0;i<=my_edges.length;i++)
+    {
+      node_to_links[i] = [];
+    }
+    for(var i=0;i<graph.graphData.links.length;i++)
+    {
+      node_to_links[graph.graphData.links[i].source.id].push(graph.graphData.links[i]);
+      node_to_links[graph.graphData.links[i].target.id].push(graph.graphData.links[i]);
+    }
+
+    /*let links = graph.graphData.links;
+    var data = [links[0].source];
+    for(var i=0;i<links.length;i++)
+      data.push(links[i].target);
+    quadtree.addAll(data);
+    for(var i = 0;i<links.length;i++)
+    {
+      let dis = Math.sqrt((crd_x[links[i].source.id]-crd_x[links[i].target.id])*(crd_x[links[i].source.id]-crd_x[links[i].target.id]) + (crd_y[links[i].source.id]-crd_y[links[i].target.id])*(crd_y[links[i].source.id]-crd_y[links[i].target.id]));
+      if(max_edge_len<dis)max_edge_len=dis;
+    }*/
+
+  }
+  intervalTime = 500;
+  startForceDirectedInterval = setInterval(startForceDirected, intervalTime);
+}
+
+function startForceDirected()
+{
+  graph.simulation.alpha(1).restart();
+}
+
+function getTreeOfParticularLevel(l)
+{
+  let new_my_edges = [];
+  let new_edge_count = 0;
+  let new_edge_distance = {};
+  let new_label_to_id = {};
+  let new_id_to_label = {};
+  let new_crd_x = {};
+  let new_crd_y = {};
+  new_label_to_id[my_edges[0][0]] = 0;
+  new_id_to_label[0] = my_edges[0][0];
+  new_crd_x[0] = crd_x[0];
+  new_crd_y[0] = crd_y[0];
+  for(var i=0;i<my_edges.length;i++)
+  {
+    /*if(nodes_to_levels[my_edges[i][0]]>nodes_to_levels[my_edges[i][1]])
+    {
+      console.log(my_edges[i][0], "has higher level than", my_edges[i][1]);
+      return;
+    }*/
+    let new_label = my_edges[i][1];
+    //if(nodes_to_levels[new_label]<=l)
+    //if(i<=3500)
+    //if(i<=2500)
+    //if(i<=1600)
+    //if(i<=800)
+    //if(i<=400)
+    //if(i<=200)
+    //if(i<=100)
+    //if(nodes_to_files[new_label]=='Graph_100.txt')
+    //if(nodes_to_files[new_label]=='Graph_200.txt')
+    //if(nodes_to_files[new_label]=='Graph_400.txt')
+    //if(nodes_to_files[new_label]=='Graph_800.txt')
+    //if(nodes_to_files[new_label]=='Graph_1600.txt')
+    //if(nodes_to_files[new_label]=='Graph_2500.txt')
+    //if(nodes_to_files[new_label]=='Graph_3500.txt')
+    //if(nodes_to_files[new_label]=='Graph_1.txt')
+    //if(nodes_to_files[new_label]=='Graph_2.txt')
+    //if(nodes_to_files[new_label]=='Graph_3.txt')
+    //if(nodes_to_files[new_label]=='Graph_4.txt')
+    //if(nodes_to_files[new_label]=='Graph_5.txt')
+    //if(nodes_to_files[new_label]=='Graph_6.txt')
+    if(nodes_to_files[new_label]=='Graph_7.txt')
+    {
+      //if(nodes_to_levels[my_edges[i][0]]>l)console.log(my_edges[i]);
+      //if((my_edges[i][0]=="applied microe03")&&(my_edges[i][1]=="labor economics"))console.log(i);
+      new_my_edges.push([my_edges[i][0], my_edges[i][1]]);
+      new_edge_distance[new_edge_count] = edge_distance[i];
+      new_edge_count = new_edge_count + 1;
+      new_label_to_id[new_label] = new_edge_count;
+      new_id_to_label[new_edge_count] = new_label;
+      new_crd_x[new_edge_count] = crd_x[label_to_id[new_label]];
+      new_crd_y[new_edge_count] = crd_y[label_to_id[new_label]];
+    }
+  }
+  my_edges = new_my_edges;
+  edge_distance = new_edge_distance;
+  label_to_id = new_label_to_id;
+  id_to_label = new_id_to_label;
+  crd_x = new_crd_x;
+  crd_y = new_crd_y;
+}
+
+var startForceDirectedInterval = setInterval(startForceDirected, intervalTime);
+
+getTreeOfParticularLevel(7);
+eps_movement = 2;
+//eps_movement = 20;
+//eps_movement = 50;
+safeMode = false;
+safeModeIter = 1;
+locked = false;
+/*quadtree = d3.quadtree()
+  .x(function (d) { return crd_x[d.id]; })
+  .y(function (d) { return crd_y[d.id]; });
+max_edge_len = 0;*/
+if(my_edges.length<=2000)
+{
+  eps_movement = -1;
+}
+function stopForceDirected() {
+  clearInterval(startForceDirectedInterval);
+  if(safeMode){
+    locked = true;
+    for(var i=0;i<=my_edges.length;i++)
+    {
+      graph.graphData.nodes[i].fx = crd_x[i];
+      graph.graphData.nodes[i].fy = crd_y[i];
+    }
+  }
+  if(safeMode==false)
+  {
+    if(eps_movement!=-1){
+      for(var i=0;i<=my_edges.length;i++)
+      {
+        let x_diff = graph.graphData.nodes[i].x - crd_x[i];
+        let y_diff = graph.graphData.nodes[i].y - crd_y[i];
+        let node_movement = Math.sqrt(x_diff*x_diff + y_diff*y_diff);
+        if(node_movement>eps_movement)
+        {
+          let eps_fact = eps_movement/node_movement;
+          graph.graphData.nodes[i].fx = crd_x[i] + x_diff*eps_fact;
+          graph.graphData.nodes[i].fy = crd_y[i] + y_diff*eps_fact;
+        }
+      }
+    }
+    else
+    {
+      for(var i=0;i<=my_edges.length;i++)
+      {
+        graph.graphData.nodes[i].fx = graph.graphData.nodes[i].x;
+        graph.graphData.nodes[i].fy = graph.graphData.nodes[i].y;
+      }
+    }
+    remove_existing_crossings();
+  }
+  /*for(var i=0;i<=my_edges.length;i++)
+  {
+    graph.graphData.nodes[i].fx = graph.graphData.nodes[i].x;
+    graph.graphData.nodes[i].fy = graph.graphData.nodes[i].y;
+  }*/
+  var t1 = performance.now();
+  //remove_existing_crossings();
+  console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+  //console.log("Ideal edge length preservation:", ideal_edge_length_preservation(graph.graphData.links, edge_distance));
+  console.log("Ideal edge length preservation:", ideal_edge_length_preservation(graph.graphData.links, edge_distance_org));
+  //area_coverage(graph.graphData.nodes);
+  let n_crossings = linkCrossingsParam(graph.graphData.links).length;
+  console.log("Number of crossings:", n_crossings);
+  if(safeMode==false)
+  {
+    if(n_crossings==0)
+    {
+      for(var i=0;i<=my_edges.length;i++)
+      {
+        crd_x[i] = graph.graphData.nodes[i].x;
+        crd_y[i] = graph.graphData.nodes[i].y;
+      }
+    }
+  }
+}
+
+/*
+function ideal_edge_length_preservation()
+{
+    let val = 0;
+    let total_dis = 0;
+    let links = graph.graphData.links;
+    let m = links.length;
+    for (let i = 0; i < m; ++i) {
+      let x1 = links[i].source.x;
+      let y1 = links[i].source.y;
+      let x2 = links[i].target.x;
+      let y2 = links[i].target.y;
+      let dis = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+      let diff = Math.abs(edge_distance[links[i].index]+edgeLengthAddition - dis);
+      //let diff = Math.abs(edge_distance[links[i].index]+100 - dis);
+      val = val + diff;
+      total_dis = total_dis + dis;
+    }
+    val = val/m;
+    let avg_dis = total_dis/m;
+    return val/avg_dis;
+}
+*/
+
+function ideal_edge_length_distribution()
+{
+    let arr = [];
+    let links = graph.graphData.links;
+    let m = links.length;
+    for (let i = 0; i < m; ++i) {
+      let x1 = links[i].source.x;
+      let y1 = links[i].source.y;
+      let x2 = links[i].target.x;
+      let y2 = links[i].target.y;
+      let drawing_dis = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+      let graph_dis = edge_distance[links[i].index]+edgeLengthAddition;
+      arr.push(drawing_dis/graph_dis-1);
+    }
+    /*console.log("[");
+    for(let i=0;i<arr.length;i++)
+    {
+      console.log(arr[i], ",");
+    }
+    console.log(arr[arr.length-1]);
+    console.log("]");*/
+    return arr;
+}
+
+var addEdgeInterval = setInterval(startAddingEdges, intervalTime);
+
+var crossingForceInterval = null;
+var removeSmallCompIntervalMultipleSafe = null;
+
+
+function stopAddingEdges() {
+  clearInterval(addEdgeInterval);
+}
+
+function myMove(){
+   //graph.simulation.force('x', d3.forceX([1000])); 
+   graph.simulation.force('x', d3.forceX().x(function(d) {
+    //console.log(d);
+    if(d.id>0){
+      //console.log(d);
+      if(d.x>graph.graphData.nodes[0].x){
+        return d.x+10;
+      }
+      else{
+        return d.x-10;
+      }
+    }
+    else
+      return 0;
+   }));
+   graph.simulation.force('y', d3.forceY().y(function(d) {
+    if(d.id>0){
+      if(d.y>graph.graphData.nodes[0].y){
+        return d.y+10;
+      }
+      else{
+        return d.y-10;
+      }
+    }
+    else
+      return 0;
+   })); 
+   graph.simulation.alpha(1).restart();
+   //console.log("center", graph.graphData.nodes[0].x, graph.graphData.nodes[0].y)
+}
+
+function moveUp(){
+    var nodeName = document.getElementById("nodeName").value;
+    var nodeId = label_to_id[nodeName];
+    var moveAmount = parseFloat(document.getElementById("moveAmount").value);
+    graph.simulation.force('y', d3.forceY().y(function(d) {
+    if(d.id==nodeId){
+        return d.y-moveAmount;
+    }
+    else
+    {
+        return d.y+moveAmount;
+    }
+   }));
+   graph.simulation.alpha(1).restart();
+}
+
+function moveDown(){
+    console.log("Down");
+    var nodeName = document.getElementById("nodeName").value;
+    var nodeId = label_to_id[nodeName];
+    var moveAmount = parseFloat(document.getElementById("moveAmount").value);
+    graph.simulation.force('y', d3.forceY().y(function(d) {
+    if(d.id==nodeId){
+        console.log(d);
+        return d.y+moveAmount;
+    }
+    else
+    {
+        return d.y-moveAmount;
+    }
+   }));
+   graph.simulation.alpha(1).restart();
+}
+
+function moveRight(){
+    var nodeName = document.getElementById("nodeName").value;
+    var nodeId = label_to_id[nodeName];
+    var moveAmount = parseFloat(document.getElementById("moveAmount").value);
+    graph.simulation.force('x', d3.forceX().x(function(d) {
+    if(d.id==nodeId){
+        return d.x+moveAmount;
+    }
+    else
+    {
+        return d.x-moveAmount;
+    }
+   }));
+   graph.simulation.alpha(1).restart();
+}
+
+function moveLeft(){
+    console.log("Left");
+    var nodeName = document.getElementById("nodeName").value;
+    var nodeId = label_to_id[nodeName];
+    var moveAmount = parseFloat(document.getElementById("moveAmount").value);
+    graph.simulation.force('x', d3.forceX().x(function(d) {
+    if(d.id==nodeId){
+        console.log(d);
+        console.log(d.x-10);
+        return d.x-moveAmount;
+    }
+    else
+    {
+        return d.x+moveAmount;
+    }
+   }));
+   graph.simulation.alpha(1).restart();
+}
+
+function movePar(nodeId, moveAmountUp, moveAmountRight){
+    graph.simulation.force('y', d3.forceY().y(function(d) {
+    if(d.id==nodeId){
+        return d.y-moveAmountUp;
+    }
+    else
+    {
+        return d.y+moveAmountUp;
+    }
+   }));
+    graph.simulation.force('x', d3.forceX().x(function(d) {
+    if(d.id==nodeId){
+        return d.x+moveAmountRight;
+    }
+    else
+    {
+        return d.x-moveAmountRight;
+    }
+   }));
+   graph.simulation.alpha(1).restart();
+}
+
+function moveParMultiple(nodeId_set, moveAmountUp, moveAmountRight){
+    graph.simulation.force('y', d3.forceY().y(function(d) {
+    if(nodeId_set.has(d.id)){
+        return d.y-moveAmountUp;
+    }
+    else
+    {
+        return d.y+moveAmountUp;
+    }
+   }));
+    graph.simulation.force('x', d3.forceX().x(function(d) {
+    if(nodeId_set.has(d.id)){
+        return d.x+moveAmountRight;
+    }
+    else
+    {
+        return d.x-moveAmountRight;
+    }
+   }));
+   graph.simulation.alpha(1).restart();
+}
+
+function moveParRun(){
+    var nodeName = document.getElementById("nodeName").value;
+    var nodeId = label_to_id[nodeName];
+    var moveAmountUp = parseFloat(document.getElementById("moveAmountUp").value);
+    var moveAmountRight = parseFloat(document.getElementById("moveAmountRight").value);
+    movePar(nodeId, moveAmountUp, moveAmountRight);
+}
+
+function switchPhase(){
+  if(addEdgePhase)addEdgePhase=false;
+  else addEdgePhase=true;
+}
+
+function removeCrossing()
+{
+  removeSmallComp(parseInt(document.getElementById("crossingID").value), linkCrossingsParam(graph.graphData.links));
+}
+
+font_size = 10;
+function zoomLabels(){
+  let max_label_reached = false;
+  let labelDoms = d3.select('body').selectAll('text')["_groups"][0];
+  let data = d3.select('body').selectAll('text').data();
+  let count = 0;
+  for(var i=0;i<labelDoms.length;i++)
+  {
+    //if((data[i].name=="pyrolysis")||(data[i].name=="sports medicine")||(data[i].name=="liquid crystals")||(data[i].name=="uncertainty quan"))continue;
+    for(var j=i+1;j<labelDoms.length;j++)
+    {
+      //if((data[j].name=="environmental ph")||(data[j].name=="cavitation")||(data[j].name=="quantum control")||(data[j].name=="muscle physiolog")||(data[j].name=="translational re")||(data[j].name=="history of polit")||(data[j].name=="deafness")||(data[j].name=="behavior")||(data[j].name=="hearing")||(data[j].name=="surface modifica")||(data[j].name=="computer simulat")||(data[j].name=="performance")||(data[j].name=="martensitic tran")||(data[j].name=="performance stud")||(data[j].name=="voting")||(data[j].name=="sedimentary geol")||(data[j].name=="percolation theo")||(data[j].name=="evolutionary dyn")||(data[j].name=="science of scien")||(data[j].name=="question answeri")||(data[j].name=="environmental")||(data[j].name=="statistical rela")||(data[j].name=="field experiment")||(data[j].name=="isotope geochemi")||(data[j].name=="underwater acous"))continue;
+      if((!isNaN(data[i].name))||(!isNaN(data[j].name)))continue;
+      var rect1 = labelDoms[i].getBoundingClientRect();
+      var rect2 = labelDoms[j].getBoundingClientRect();
+      max_label_reached = !(rect1.right < rect2.left || 
+                rect1.left > rect2.right || 
+                rect1.bottom < rect2.top || 
+                rect1.top > rect2.bottom)
+      if(max_label_reached)
+      {
+        if(count==0){
+          console.log(labelDoms[i], " overlaps ", labelDoms[j]);
+          console.log(rect1, rect2);
+        }
+        count += 1;
+        ////max_label_reached = false;
+        //break;
+      }
+    }
+    //if(max_label_reached==true)break;
+  }
+  console.log("count:", count);
+  font_size += 1;
+  d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  /*if(!max_label_reached)
+  {
+    font_size += 1;
+    d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  }
+  else
+  {
+    alert("Can not zoom further!");
+    console.log("Area coverage:", areaCoverage(labelDoms));
+  }*/
+}
+function findLabelOverlaps(){
+  safeMode = false;
+  let max_label_reached = false;
+  let labelDoms = d3.select('body').selectAll('text')["_groups"][0];
+  let data = d3.select('body').selectAll('text').data();
+  let count = 0;
+  for(var i=0;i<labelDoms.length;i++)
+  {
+    for(var j=i+1;j<labelDoms.length;j++)
+    {
+      if((!isNaN(data[i].name))||(!isNaN(data[j].name)))continue;
+      var rect1 = labelDoms[i].getBoundingClientRect();
+      var rect2 = labelDoms[j].getBoundingClientRect();
+      max_label_reached = !(rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom)
+      if(max_label_reached)
+      {
+        first_overlapping_label = id_to_label[i];
+        label_to_go = id_to_label[j];
+        label_right_now = document.getElementById("centerLabelID").value;
+        //label_right_now = my_edges[0][0];
+        graph.svgGroup.attr("transform", `translate(${-crd_x[label_to_id[label_to_go]]+crd_x[label_to_id[label_right_now]]}, ${-crd_y[label_to_id[label_to_go]]+crd_y[label_to_id[label_right_now]]})`);
+        if(count==0){
+          console.log(labelDoms[i], " overlaps ", labelDoms[j]);
+          console.log(rect1, rect2);
+        }
+        count += 1;
+        //max_label_reached = false;
+        break;
+      }
+    }
+    if(max_label_reached==true)break;
+  }
+  console.log("count:", count);
+  font_size += 1;
+  d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  /*if(!max_label_reached)
+  {
+    font_size += 1;
+    d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  }
+  else
+  {
+    alert("Can not zoom further!");
+    console.log("Area coverage:", areaCoverage(labelDoms));
+  }*/
+}
+function labelUp()
+{
+  graph.graphData.nodes[label_to_id[label_to_go]].fy -= 10;
+}
+function labelDown()
+{ 
+  graph.graphData.nodes[label_to_id[label_to_go]].fy += 10;
+}
+function labelLeft()
+{
+  graph.graphData.nodes[label_to_id[label_to_go]].fx -= 10;
+}
+function labelRight()
+{ 
+  graph.graphData.nodes[label_to_id[label_to_go]].fx += 10;
+}
+function labelUpOther()
+{
+  graph.graphData.nodes[label_to_id[first_overlapping_label]].fy -= 10;
+}
+function labelDownOther()
+{
+  graph.graphData.nodes[label_to_id[first_overlapping_label]].fy += 10;
+}
+function labelLeftOther()
+{
+  graph.graphData.nodes[label_to_id[first_overlapping_label]].fx -= 10;
+}
+function labelRightOther()
+{
+  graph.graphData.nodes[label_to_id[first_overlapping_label]].fx += 10;
+}
+function printCoordinates()
+{
+  let crd_x_rev = {};
+  let crd_y_rev = {};
+  for(var l=0;l<=my_edges.length;l++){
+    crd_x_rev[l] = graph.graphData.nodes[l].fx;
+    crd_y_rev[l] = graph.graphData.nodes[l].fy;
+  }
+  console.log(crd_x_rev, crd_y_rev);
+  console.log("Number of crossings:", linkCrossingsWithCrds (crd_x_rev, crd_y_rev).length);
+}
+function zoomOutLabels(){
+  let labelDoms = d3.select('body').selectAll('text')["_groups"][0];
+  let labelDoms_temp = [];
+  for(var i=0;i<labelDoms.length;i++)
+  {
+    /*//if(labelDoms[i].__data__.id>3500)continue;
+    //if(labelDoms[i].__data__.id>2500)continue;
+    //if(labelDoms[i].__data__.id>1600)continue;
+    //if(labelDoms[i].__data__.id>800)continue;
+    //if(labelDoms[i].__data__.id>400)continue;
+    //if(labelDoms[i].__data__.id>200)continue;
+    if(labelDoms[i].__data__.id>100)continue;*/
+    labelDoms_temp.push(labelDoms[i]);
+  }
+  labelDoms = labelDoms_temp;
+  font_size -= 1;
+  d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  console.log("Area coverage:", areaCoverage(labelDoms));
+}
+myInit();
+</script>
+
+<!-- 
+<input type="button" value="Add" onclick="myAdd()"><br>
+<label for="nodeName">Node:</label> <input type="text" id="nodeName" name="nodeName"><br>
+<label for="moveAmount">Move Amount:</label> <input type="text" id="moveAmount" name="moveAmount"><br>
+<input type="button" value="Up" onclick="moveUp()">
+<input type="button" value="Down" onclick="moveDown()">
+<input type="button" value="Left" onclick="moveLeft()">
+<input type="button" value="Right" onclick="moveRight()"><br>
+<label for="moveAmountUp">Move Amount up:</label> <input type="text" id="moveAmountUp" name="moveAmountUp"><br>
+<label for="moveAmountRight">Move Amount right:</label> <input type="text" id="moveAmountRight" name="moveAmountRight"><br>
+<input type="button" value="Move" onclick="moveParRun()">
+ -->
+
+<!-- 
+<input type="button" value="Show crossings" onclick="console.log(linkCrossingsParam(graph.graphData.links))"><br>
+<label for="crossingID">Crossing ID:</label> <input type="text" id="crossingID" name="crossingID"><br>
+<input type="button" value="Remove crossing" onclick="removeCrossing()"><br>
+<input type="button" value="Print graph" onclick="myGraph.printGraph()">
+<input type="button" value="Remove edge" onclick="myGraph.removeEdge(0, 1)">
+<input type="button" value="BFS" onclick="console.log(myGraph.bfs(0))">
+<input type="button" value="Add edge" onclick="myGraph.addEdge(0, 1)">
+ -->
+
+<!-- 
+<div>Number of crossings:<input type="text" id="number_of_crossings"><input type="button" id="switchButton" value="Switch" onclick="switchPhase()"><input type="button" value="Remove crossings" onclick="remove_existing_crossings()"></div>
+ -->
+
+<input type="button" value="Add edge" onclick="startAddingEdges()">
+<input type="button" value="zoom in" onclick="zoomLabels()">
+<input type="button" value="zoom out" onclick="zoomOutLabels()">
+<input type="button" value="start" onclick="initForceDirected()">
+<input type="button" value="stop" onclick="stopForceDirected()"><br>
+<label for="centerLabelID">Center label ID:</label> <input type="text" id="centerLabelID" name="centerLabel">
+<input type="button" value="Find overlap" onclick="findLabelOverlaps()">
+<input type="button" value="Left" onclick="labelLeft()">
+<input type="button" value="Right" onclick="labelRight()">
+<input type="button" value="Up" onclick="labelUp()">
+<input type="button" value="Down" onclick="labelDown()">
+<input type="button" value="Left" onclick="labelLeftOther()">
+<input type="button" value="Right" onclick="labelRightOther()">
+<input type="button" value="Up" onclick="labelUpOther()">
+<input type="button" value="Down" onclick="labelDownOther()">
+<input type="button" value="Print" onclick="printCoordinates()">
+
+</body></html>
