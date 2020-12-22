@@ -44,6 +44,9 @@ text {
 <!-- <script src="ideal_edge_lenghth_preservation.js"></script> -->
 <script src="ideal_edge_lenghth_preservation_mingwei.js"></script>
 <!-- 2500 3000 3500 4000 4500 5000 -->
+<!-- <script src="topics_more_levels.js"></script> -->  <!-- 5000 -->
+<!-- <script src="zmlt_input_more_levels.js"></script> -->  <!-- 5000 -->
+<!-- <script src="zmlt_input_more_levels_400.js"></script> -->  <!-- 5000 -->
 <!-- <script src="topics_zmlt_input.js"></script> -->  <!-- 5000 -->
 <!-- <script src="topics_zmlt_input_v2.js"></script> -->  <!-- 5000 -->
 <!-- <script src="nodes_to_files.js"></script> -->  <!-- 5000 -->
@@ -74,6 +77,42 @@ text {
 <!-- <script src="low_degree_topics_data_3.js"></script> -->  <!-- 200 -->
 <!-- <script src="low_degree_topics_data_2.js"></script> -->  <!-- 100 -->
 <!-- <script src="low_degree_topics_data_1.js"></script> -->  <!-- 50 -->
+<!-- <script src="low_degree_angular_500.js"></script> -->  <!-- 500 -->
+<!-- <script src="topics_20_levels_10.js"></script> -->
+<!-- <script src="topics_20_levels_10_iter_500.js"></script> -->
+<!-- <script src="topics_20_levels_10_postprocessed.js"></script> -->
+<!-- <script src="topics_20_levels_10_same_length.js"></script> -->
+<!-- <script src="topics_20_levels_10_iter_500_same_length_postprocessed.js"></script> -->
+<!-- <script src="topics_20_levels.js"></script> -->
+<!-- <script src="topics_20_levels_run_1.js"></script> -->
+<!-- <script src="topics_20_levels_run_1_postprocessed_1.js"></script> -->
+<!-- <script src="topics_20_levels_run_1_postprocessed_3.js"></script> -->
+<!-- <script src="topics_20_levels_run_2.js"></script> -->
+<!-- <script src="topics_20_levels_run_3.js"></script> -->
+<!-- <script src="topics_20_levels_run_4.js"></script> -->
+<!-- <script src="topics_20_levels_run_6.js"></script> -->
+<!-- <script src="topics_20_levels_run_7.js"></script> -->
+<!-- <script src="topics_20_levels_run_7_postprocessed.js"></script> -->
+<!-- <script src="topics_20_levels_run_7_postprocessed_2.js"></script> -->
+<!-- <script src="topics_20_levels_run_7_postprocessed_3.js"></script> -->
+<!-- <script src="lastfm_more_levels.js"></script> -->
+<!-- <script src="lastfm_more_levels_run_1.js"></script> -->
+<!-- <script src="lastfm_more_levels_run_2.js"></script> -->
+<!-- <script src="lastfm_more_levels_run_2_postprocessed.js"></script> -->
+<!-- <script src="lastfm_more_levels_run_2_postprocessed_2.js"></script> -->
+<!-- <script src="lastfm_compute_mlst.js"></script> -->
+<!-- <script src="lastfm_compute_mlst_run_1.js"></script> -->
+<!-- <script src="lastfm_compute_mlst_run_1_postprocessed.js"></script> -->
+<!-- <script src="lastfm_compute_mlst_run_1_postprocessed_3.js"></script> -->
+<!-- <script src="topics_compute_mlst.js"></script> -->
+<!-- <script src="topics_compute_mlst_run_1.js"></script> -->
+<!-- <script src="topics_compute_mlst_run_1_postprocessed.js"></script> -->
+<!-- <script src="topics_compute_mlst_run_1_postprocessed_2.js"></script> -->
+<!-- <script src="topics_compute_mlst_run_1_postprocessed_3.js"></script> -->
+<!-- <script src="topics_compute_mlst_run_1_postprocessed_4.js"></script> -->
+<script src="topics_compute_mlst_run_1_postprocessed_5.js"></script>
+<!-- <script src="low_degree_angular_100.js"></script> -->  <!-- 100 -->
+<!-- <script src="low_degree_angular_50.js"></script> -->  <!-- 50 -->
 <!-- <script src="topics_data_small.js"></script> -->
 <!-- <script src="topics_data_large.js"></script> -->
 <!-- <script src="topics_data.js"></script> -->
@@ -97,7 +136,7 @@ text {
 <!-- <script src="hard_instance.js"></script> -->
 <!-- <script src="symmetric.js"></script> -->
 <!-- <script src="non_symmetric.js"></script> -->
-<script src="lastfm_8.js"></script>
+<!-- <script src="lastfm_8.js"></script> -->
 <!-- <script src="crd_lastfm_8_1000.js"></script> -->
 <!-- <script src="crd_lastfm_8_1000_revised.js"></script> -->
 <!-- <script src="lastfm_mltd_input.js"></script> -->
@@ -107,7 +146,7 @@ text {
 <!-- <script src="lastfm_nodes_to_files_4.js"></script> -->
 <!-- <script src="lastfm_nodes_to_files_5.js"></script> -->
 <!-- <script src="lastfm_nodes_to_files_6.js"></script> -->
-<script src="lastfm_nodes_to_files_7.js"></script>
+<!-- <script src="lastfm_nodes_to_files_7.js"></script> -->
 <script>
 //enable_GUI = false;
 enable_GUI = true;
@@ -1305,6 +1344,7 @@ function getTreeOfParticularLevel(l)
     //if(i<=400)
     //if(i<=200)
     //if(i<=100)
+    //if(nodes_to_files[new_label]=='Graph_25.txt')
     //if(nodes_to_files[new_label]=='Graph_100.txt')
     //if(nodes_to_files[new_label]=='Graph_200.txt')
     //if(nodes_to_files[new_label]=='Graph_400.txt')
@@ -1313,12 +1353,13 @@ function getTreeOfParticularLevel(l)
     //if(nodes_to_files[new_label]=='Graph_2500.txt')
     //if(nodes_to_files[new_label]=='Graph_3500.txt')
     //if(nodes_to_files[new_label]=='Graph_1.txt')
+    if(nodes_to_files[new_label]=='Graph_1_25.txt')
     //if(nodes_to_files[new_label]=='Graph_2.txt')
     //if(nodes_to_files[new_label]=='Graph_3.txt')
     //if(nodes_to_files[new_label]=='Graph_4.txt')
     //if(nodes_to_files[new_label]=='Graph_5.txt')
     //if(nodes_to_files[new_label]=='Graph_6.txt')
-    if(nodes_to_files[new_label]=='Graph_7.txt')
+    //if(nodes_to_files[new_label]=='Graph_7.txt')
     {
       //if(nodes_to_levels[my_edges[i][0]]>l)console.log(my_edges[i]);
       //if((my_edges[i][0]=="applied microe03")&&(my_edges[i][1]=="labor economics"))console.log(i);
@@ -1341,7 +1382,7 @@ function getTreeOfParticularLevel(l)
 
 var startForceDirectedInterval = setInterval(startForceDirected, intervalTime);
 
-getTreeOfParticularLevel(7);
+//getTreeOfParticularLevel(7);
 eps_movement = 2;
 //eps_movement = 20;
 //eps_movement = 50;
@@ -1640,7 +1681,7 @@ function removeCrossing()
 }
 
 font_size = 10;
-function zoomLabels(){
+function zoomLabelsMain(){
   let max_label_reached = false;
   let labelDoms = d3.select('body').selectAll('text')["_groups"][0];
   let data = d3.select('body').selectAll('text').data();
@@ -1671,9 +1712,9 @@ function zoomLabels(){
     }
     //if(max_label_reached==true)break;
   }
-  console.log("count:", count);
   font_size += 1;
   d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  return count;
   /*if(!max_label_reached)
   {
     font_size += 1;
@@ -1684,6 +1725,210 @@ function zoomLabels(){
     alert("Can not zoom further!");
     console.log("Area coverage:", areaCoverage(labelDoms));
   }*/
+}
+function zoomLabels(){
+  let count = zoomLabelsMain();
+  console.log("count:", count);
+}
+function postProcessing(){
+  let node_to_links = {};
+  for(var i=0;i<=my_edges.length;i++)
+  {
+      node_to_links[i] = [];
+  }
+  for(var i=0;i<graph.graphData.links.length;i++)
+  {
+      node_to_links[graph.graphData.links[i].source.id].push(graph.graphData.links[i]);
+      node_to_links[graph.graphData.links[i].target.id].push(graph.graphData.links[i]);
+  }
+  let shift_x_arr = [];
+  let shift_y_arr = [];
+  for(var i=0;i<graph.graphData.nodes.length;i++)
+  {
+    shift_x_arr.push(0);
+    shift_y_arr.push(0);
+  }
+  let crd_x_rev = {};
+  let crd_y_rev = {};
+  for(var l=0;l<=my_edges.length;l++){
+    crd_x_rev[l] = graph.graphData.nodes[l].fx;
+    crd_y_rev[l] = graph.graphData.nodes[l].fy;
+  }
+  let max_label_reached = false;
+  let labelDoms = d3.select('body').selectAll('text')["_groups"][0];
+  let data = d3.select('body').selectAll('text').data();
+  let count = 0;
+  let count_solved = 0;
+  for(var i=0;i<labelDoms.length;i++)
+  {
+    for(var j=i+1;j<labelDoms.length;j++)
+    { 
+      if((!isNaN(data[i].name))||(!isNaN(data[j].name)))continue;
+      var rect1 = labelDoms[i].getBoundingClientRect();
+      var rect2 = labelDoms[j].getBoundingClientRect();
+      max_label_reached = !(rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom)
+      if(max_label_reached)
+      { 
+        /*if(count==0){
+          console.log(labelDoms[i], " overlaps ", labelDoms[j]);
+          console.log(rect1, rect2);
+        }*/
+        // The postprocessing step
+        let overlapped_labels = [i, j];
+        let overlap_crossing_free = false;
+        for(let k=0;k<overlapped_labels.length;k++)
+        {
+          let ind = overlapped_labels[k];
+          // continue this for 100 times
+          for(let l=0;l<100;l++)
+          //for(let l=0;l<1;l++)
+          {
+            // consider a small square of 300x300
+            // random sample a number from -150 to 150, once for x coord, once for y coord
+            //let box_size = 301;
+            let box_size = 601;
+            let shift_x = (Math.random() * box_size) - (box_size/2);
+            let shift_y = (Math.random() * box_size) - (box_size/2);
+            shift_x_arr[ind] = shift_x;
+            shift_y_arr[ind] = shift_y;
+            let prev_x = graph.graphData.nodes[ind].fx;
+            let prev_y = graph.graphData.nodes[ind].fy;
+            graph.graphData.nodes[ind].fx += shift_x;
+            graph.graphData.nodes[ind].fy += shift_y;
+            crd_x_rev[ind] = graph.graphData.nodes[ind].fx;
+            crd_y_rev[ind] = graph.graphData.nodes[ind].fy;
+            // check whether it removes overlap without new crossing
+            let overlap_free = true;
+            for(let m=0;m<labelDoms.length;m++)
+            {
+              if(m==ind)continue;
+              var rect3 = labelDoms[ind].getBoundingClientRect();
+              var rect4 = labelDoms[m].getBoundingClientRect();
+              let is_overlap = !(rect3.right+shift_x_arr[ind] < rect4.left ||
+                rect3.left+shift_x_arr[ind] > rect4.right ||
+                rect3.bottom+shift_y_arr[ind] < rect4.top ||
+                rect3.top+shift_y_arr[ind] > rect4.bottom);
+              if(is_overlap)
+              {
+                overlap_free = false;
+                break;
+              }
+            }
+            if(overlap_free)
+            {
+              // take all neighbor edges, check whether any of these edges make crossing with any other edge
+              let introducesCrossing = false;
+              for(let m=0;m<node_to_links[ind].length;m++)
+              { 
+                let link = node_to_links[ind][m]; 
+                if(hasLinkCrossingsWithInputLink(link, crd_x_rev, crd_y_rev))
+                { 
+                  introducesCrossing = true;
+                  break;
+                }
+              }
+              if(overlap_free && (!introducesCrossing))
+              //if(overlap_free)
+              {
+                overlap_crossing_free = true;
+                console.log("Found an overlap and crossing free coordinate for", overlapped_labels);
+                count_solved += 1;
+              }
+            }
+            if(overlap_crossing_free)break;
+            else
+            {
+              graph.graphData.nodes[ind].fx = prev_x;
+              graph.graphData.nodes[ind].fy = prev_y;
+              shift_x_arr[ind] = 0;
+              shift_y_arr[ind] = 0;
+              crd_x_rev[ind] = prev_x;
+              crd_y_rev[ind] = prev_y;
+            }
+          }
+          if(overlap_crossing_free)break;
+          else
+          {
+            console.log("Could not found an overlap and crossing free coordinate for", overlapped_labels);
+          }
+        }
+        count += 1;
+        ////max_label_reached = false;
+        //break;
+      }
+    }
+    //if(max_label_reached==true)break;
+  }
+  console.log("Post-processing- overlaps:", count, " removed:", count_solved);
+}
+function best_rotation()
+{
+  let number_of_rotations = 360/15;
+  let angles = [];
+  for(let i=0;i<number_of_rotations;i++)
+  {
+    angles.push(i*15);
+  }
+  let crd_x_rev = {};
+  let crd_y_rev = {};
+  for(var l=0;l<=my_edges.length;l++){
+    crd_x_rev[l] = graph.graphData.nodes[l].fx;
+    crd_y_rev[l] = graph.graphData.nodes[l].fy;
+  }
+  let max_area_cov = -1;
+  let best_theta = -1;
+  let cntr_x = crd_x_rev[0];
+  let cntr_y = crd_y_rev[0];
+  for(let i=0;i<number_of_rotations;i++)
+  {
+    let theta = angles[i];
+    theta = theta*(2*Math.PI/360);
+    for(var l=0;l<=my_edges.length;l++){
+      let x = crd_x_rev[l];
+      let y = crd_y_rev[l];
+      x = x - cntr_x;
+      y = y - cntr_y;
+      let rx = x*Math.cos(theta)-y*Math.sin(theta);
+      let ry = x*Math.sin(theta)+y*Math.cos(theta);
+      x = rx + cntr_x;
+      y = ry + cntr_y;
+      graph.graphData.nodes[l].fx = x;
+      graph.graphData.nodes[l].fy = y;
+    }
+    let cur_count = zoomLabelsMain();
+    let labelDoms = zoomOutLabelsMain();
+    let cur_area_cov = areaCoverage(labelDoms);
+    if(max_area_cov==-1)
+    {
+      max_area_cov = cur_area_cov;
+      best_theta = theta;
+    }
+    else
+    {
+      if((cur_count==0)&&(cur_area_cov>max_area_cov))
+      {
+        max_area_cov = cur_area_cov;
+        best_theta = theta;
+      }
+    }
+  }
+  theta = best_theta;
+  for(var l=0;l<=my_edges.length;l++){
+    let x = crd_x_rev[l];
+    let y = crd_y_rev[l];
+    x = x - cntr_x;
+    y = y - cntr_y;
+    let rx = x*Math.cos(theta)-y*Math.sin(theta);
+    let ry = x*Math.sin(theta)+y*Math.cos(theta);
+    x = rx + cntr_x;
+    y = ry + cntr_y;
+    graph.graphData.nodes[l].fx = x;
+    graph.graphData.nodes[l].fy = y;
+  }
+  console.log("best_theta:", best_theta);
 }
 function findLabelOverlaps(){
   safeMode = false;
@@ -1777,7 +2022,7 @@ function printCoordinates()
   console.log(crd_x_rev, crd_y_rev);
   console.log("Number of crossings:", linkCrossingsWithCrds (crd_x_rev, crd_y_rev).length);
 }
-function zoomOutLabels(){
+function zoomOutLabelsMain(){
   let labelDoms = d3.select('body').selectAll('text')["_groups"][0];
   let labelDoms_temp = [];
   for(var i=0;i<labelDoms.length;i++)
@@ -1794,6 +2039,10 @@ function zoomOutLabels(){
   labelDoms = labelDoms_temp;
   font_size -= 1;
   d3.select('body').selectAll('text').style("font-size", function(d){if(isNaN(d.name))return font_size+"px"; else return "0px";});
+  return labelDoms;
+}
+function zoomOutLabels(){
+  let labelDoms = zoomOutLabelsMain();
   console.log("Area coverage:", areaCoverage(labelDoms));
 }
 myInit();
