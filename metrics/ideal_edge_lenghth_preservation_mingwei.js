@@ -10,5 +10,6 @@ function ideal_edge_length_preservation(links, ideal_lengths){
     total_difference += Math.pow(diff / ideal_lengths[i], 2);
   }
   let average_difference = Math.sqrt(total_difference / links.length);
-  return 1-average_difference;
+  //return 1-average_difference;
+  return average_difference;
 }
