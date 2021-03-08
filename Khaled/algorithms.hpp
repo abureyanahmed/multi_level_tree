@@ -701,7 +701,8 @@ class algorithms{
           }
           total_area = (x_mx-x_mn)*(y_mx-y_mn);
           //scale = 0.01*total_area/(0.6*total_len);
-          scale = 0.1*total_area/(0.6*total_len);
+          //scale = 0.1*total_area/(0.6*total_len);
+          scale = sqrt(0.1*total_area/(0.6*total_len));
           //cout << "width " << scale*.6 << " height " << scale << endl;
           INDEXTYPE count = 0, count_solved = 0;
           for(INDEXTYPE i=0;i<graph.rows;i++)
