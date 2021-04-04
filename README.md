@@ -7,3 +7,7 @@ See desirable_length_guided/ in this repository
 
 ## The Companess Guided (CG) Algorithm
 See [[link]](https://github.com/tiga1231/zmlt/) for details
+
+## The Parallel BatchTree (BT) Algorithm
+See [[link]](https://github.com/khaled-rahman/BatchTree) for details
+
