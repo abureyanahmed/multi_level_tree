@@ -5,7 +5,7 @@ See [[link]](https://github.com/enggiqbal/mlgd/blob/master/ml_tree_extractor/deg
 ## The Readable Tree Layout Algorithm that emphasizes on edge lengths (RTL_L)
 See desirable_length_guided/ in this repository
 
-## The Readable Tree Layout Algorithm that emphasizes on Companess (RTL_C)
+## The Readable Tree Layout Algorithm that emphasizes on companess (RTL_C)
 See [[link]](https://github.com/tiga1231/zmlt/) for details
 
 ## The Parallel Readable Tree Layout (PRT) Algorithm
