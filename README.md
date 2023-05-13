@@ -5,6 +5,8 @@ Large tree structures are ubiquitous and real-world relational datasets often ha
 ## The Readable Tree Layout Algorithm that emphasizes on edge lengths (RTL_L)
 See desirable_length_guided/ in this repository
 
+To run the code, please open the file named "avoiding_crossing_by_initialization.html" in a browser. The input network needs to be described in a javascript file. A sample input file named "topics_compute_mlst_run_1_postprocessed_5.js" is available in the same directory. The d3 library is available in the folder named "dynamic_update_files". Keep that folder in the working directory and put the javascript file of the d3 library inside that folder. We also need to put some additional files named "area_coverage_mingwei.js", "crossings_initial.js", and "ideal_edge_lenghth_preservation_mingwei.js" in the working directory. These files are also available in the same folder of this repository. These files contain some code to evaluate the algorithms. If we just open the html file, the dataset will be automatically loaded and shown in the browser. Note that if the dataset is large then it can take a few minutes to load. Once loaded, the evaluation of the initial layout will be printed in the console. Then the user can click the start button to run the force-directed algorithm. The user can click the stop button to stop the force-directed algorithm and the evaluation will be printed in the console.
+
 ## The Readable Tree Layout Algorithm that emphasizes on companess (RTL_C)
 See [[link]](https://github.com/tiga1231/zmlt/) for details
 
