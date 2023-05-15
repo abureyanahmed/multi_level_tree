@@ -2,6 +2,17 @@
 <!-- saved from url=(0062)https://bl.ocks.org/sgcc/raw/7ad094c9acd1877785ee39cde67eb6c7/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
+#myProgress {
+  /*width: 100%;*/
+  width: 500px;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #04AA6D;
+}
 
 .links line {
   stroke: #76963e;
@@ -36,6 +47,10 @@ text {
 </style>
 
 </head><body><div id="ib-d3-graph-div">
+<div id="myProgress" style="float:left">
+  <div id="myBar"></div>
+</div>
+<div style="float:left;margin:3px;" id="bar_message">Loading initial layout ...</div>
 <!-- <svg id="testSvgId" width="960" height="500"></svg> -->
 <script src="./dynamic_update_files/d3.v4.min.js"></script>
 <script src="crossings_initial.js"></script>
@@ -100,7 +115,7 @@ text {
 <!-- <script src="lastfm_more_levels_run_2.js"></script> -->
 <!-- <script src="lastfm_more_levels_run_2_postprocessed.js"></script> -->
 <!-- <script src="lastfm_more_levels_run_2_postprocessed_2.js"></script> -->
-<!-- <script src="lastfm_compute_mlst.js"></script> -->
+<script src="lastfm_compute_mlst.js"></script>
 <!-- <script src="lastfm_compute_mlst_run_1.js"></script> -->
 <!-- <script src="lastfm_compute_mlst_run_1_postprocessed.js"></script> -->
 <!-- <script src="lastfm_compute_mlst_run_1_postprocessed_3.js"></script> -->
@@ -110,7 +125,7 @@ text {
 <!-- <script src="topics_compute_mlst_run_1_postprocessed_2.js"></script> -->
 <!-- <script src="topics_compute_mlst_run_1_postprocessed_3.js"></script> -->
 <!-- <script src="topics_compute_mlst_run_1_postprocessed_4.js"></script> -->
-<script src="topics_compute_mlst_run_1_postprocessed_5.js"></script>
+<!-- <script src="topics_compute_mlst_run_1_postprocessed_5.js"></script> -->
 <!-- <script src="low_degree_angular_100.js"></script> -->  <!-- 100 -->
 <!-- <script src="low_degree_angular_50.js"></script> -->  <!-- 50 -->
 <!-- <script src="topics_data_small.js"></script> -->
@@ -148,14 +163,72 @@ text {
 <!-- <script src="lastfm_nodes_to_files_6.js"></script> -->
 <!-- <script src="lastfm_nodes_to_files_7.js"></script> -->
 <script>
-//enable_GUI = false;
-enable_GUI = true;
+enable_GUI = false;
+//enable_GUI = true;
 //edgeLengthAddition = 200;
 //edgeLengthAddition = 100;
 //edgeLengthAddition = 50;
 edgeLengthAddition = 0;
 show_collision_circle = false;
 //show_collision_circle = true;
+
+function start_init_bar() {
+    var elem = document.getElementById("myBar");
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (my_count >= my_edges.length) {
+        clearInterval(id);
+        setTimeout(()=>{document.getElementById('bar_message').textContent="Running force-directed method ...";start_fd_bar(250)}, 30);
+      } else {
+        elem.style.width = (my_count/my_edges.length)*500 + "px";
+      }
+    }
+}
+start_init_bar()
+
+function start_fd_bar(number_of_iterations) {
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    initForceDirected();
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= number_of_iterations) {
+        clearInterval(id);
+        stopForceDirected();
+    	setTimeout(()=>{
+	  document.getElementById('bar_message').textContent="Zooming out ...";
+	  d3.selectAll(".links line").style("stroke", "black");
+	  d3.selectAll(".links line").style("stroke-width", "19.0px");
+	  d3.selectAll(".links line").style("stroke-opacity", "1.5");
+
+	  d3.selectAll(".nodes circle").style("stroke", "green");
+	  d3.selectAll(".nodes circle").style("stroke-width", "0.5px");
+
+	  d3.selectAll("#ib-d3-graph-div").style("height", "700px");
+	  d3.selectAll("#ib-d3-graph-div").style("width:", "960px");
+
+	  d3.selectAll("#testSvgId").style("height", "700px");
+	  d3.selectAll("#testSvgId").style("width", "960px");
+	  d3.selectAll("#testSvgId").style("border-style", "solid");
+
+	  d3.selectAll("#backgroundId").style("height", "700px");
+	  d3.selectAll("#backgroundId").style("width", "960px");
+	  d3.selectAll("#backgroundId").style("fill", "white");
+
+	  d3.selectAll("text").style("font", "bold 12px monospace");
+
+	  d3.selectAll(".links line").style("transform", "matrix(.02,0,0,.02,200,250)");
+	  d3.selectAll(".nodes circle").remove();
+	  d3.selectAll("text").remove();
+    	}, 30);
+      } else {
+        width++;
+        elem.style.width = (width/number_of_iterations)*500 + "px";
+      }
+    }
+}
+
+
 class D3ForceGraph {
   constructor(graphDiv, svgId) {
     let t = this;
