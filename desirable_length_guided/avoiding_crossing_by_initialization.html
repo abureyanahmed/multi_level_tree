@@ -110,12 +110,12 @@ text {
 <!-- <script src="topics_20_levels_run_7_postprocessed.js"></script> -->
 <!-- <script src="topics_20_levels_run_7_postprocessed_2.js"></script> -->
 <!-- <script src="topics_20_levels_run_7_postprocessed_3.js"></script> -->
-<!-- <script src="lastfm_more_levels.js"></script> -->
+<script src="lastfm_more_levels.js"></script>
 <!-- <script src="lastfm_more_levels_run_1.js"></script> -->
 <!-- <script src="lastfm_more_levels_run_2.js"></script> -->
 <!-- <script src="lastfm_more_levels_run_2_postprocessed.js"></script> -->
 <!-- <script src="lastfm_more_levels_run_2_postprocessed_2.js"></script> -->
-<script src="lastfm_compute_mlst.js"></script>
+<!-- <script src="lastfm_compute_mlst.js"></script> -->
 <!-- <script src="lastfm_compute_mlst_run_1.js"></script> -->
 <!-- <script src="lastfm_compute_mlst_run_1_postprocessed.js"></script> -->
 <!-- <script src="lastfm_compute_mlst_run_1_postprocessed_3.js"></script> -->
@@ -217,10 +217,13 @@ function start_fd_bar(number_of_iterations) {
 
 	  d3.selectAll("text").style("font", "bold 12px monospace");
 
-	  d3.selectAll(".links line").style("transform", "matrix(.02,0,0,.02,200,250)");
+	  d3.selectAll(".links line").style("transform", "matrix(.02,0,0,.02,300,400) rotateX(180deg)");
 	  d3.selectAll(".nodes circle").remove();
 	  d3.selectAll("text").remove();
     	}, 30);
+    	setTimeout(()=>{
+	  document.getElementById('bar_message').textContent="Algorithm execution completed!";
+    	}, 3000);
       } else {
         width++;
         elem.style.width = (width/number_of_iterations)*500 + "px";
